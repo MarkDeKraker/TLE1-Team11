@@ -1,6 +1,52 @@
 # TLE1-Team11
 Repository for TLE1
 
+# Hoe installeer je het project
+
+## Clone het project
+
+- Dit is de link naar het **[project](https://github.com/MarkDeKraker/TLE1-Team11.git)**
+
+## Pull het project
+
+## Laad files in
+
+Start XAMPP / WAMP. Zorg dat de databaseserver aanstaat. Wil je dit zeker weten start dan ook de Apache server en navigeer naar http://localhost/phpmyadmin/. Als je de databases kan zien betekent dit dat de server draait.
+
+### Projectsettings
+
+Open het `.env.example` bestand en dupliceer deze in dezelfde map (Verander de naam van de nieuwe `.env.example` file naar `.env`)
+
+Voer de volgende commandos uit in je terminal:
+
+```bash
+composer install
+```
+
+```bash
+npm install
+
+npm run dev
+```
+
+```bash
+php artisan serve
+```
+
+De server wordt gestart en het url wordt weergegeven in de terminal. Met CTRL / CMD + click kun je het url openen in je browser. (Als er een error staat over een missing app_key klik op `Generate app key` en refresh de pagina)
+
+Open een nieuwe terminal en voer de volgende commando uit:
+
+```bash
+npm run watch
+```
+
+Hiermee update je de styling elke keer als je iets in de frontend bewerkt.
+
+Als het goed is zie je nu de default startpagina van Laravel.
+
+**Gefeliciteerd, de installatie is geslaagd!**
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
