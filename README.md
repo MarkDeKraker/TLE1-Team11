@@ -1,15 +1,15 @@
 # TLE1-Team11
 Repository for TLE1
 
-# Hoe installeer je het project
+## Hoe installeer je het project
 
-## Clone het project
+### Clone het project
 
 - Dit is de link naar het **[project](https://github.com/MarkDeKraker/TLE1-Team11.git)**
 
-## Pull het project
+Pull het project
 
-## Laad files in
+### Laad files in
 
 Start XAMPP / WAMP. Zorg dat de databaseserver aanstaat. Wil je dit zeker weten start dan ook de Apache server en navigeer naar http://localhost/phpmyadmin/. Als je de databases kan zien betekent dit dat de server draait.
 
@@ -20,12 +20,14 @@ Open het `.env.example` bestand en dupliceer deze in dezelfde map (Verander de n
 Voer de volgende commandos uit in je terminal:
 
 ```bash
+npm install
+```
+
+```bash
 composer install
 ```
 
 ```bash
-npm install
-
 npm run dev
 ```
 
