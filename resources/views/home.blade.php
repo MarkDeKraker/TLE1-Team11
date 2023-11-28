@@ -57,6 +57,12 @@
         </div>
 
 
+        <div class="article m-4 p-8 rounded-xl shadow-xl shadow-md-top flex">
+            <h4 class="art-title text-xl font-bold">Op zoek naar je eerste bijbaantje? Hier moet je op letten.</h4>
+            <div class="art-tag">
+            </div>
+            <img src="images/dummy-img1.png" alt="dummy image" class="h-12 w-12 rounded">
+        </div>
 
 
         <div class="article m-4 p-8 rounded-xl shadow-xl shadow-md-top flex">
@@ -67,26 +73,12 @@
         </div>
 
 
-
-
         <div class="article m-4 p-8 rounded-xl shadow-xl shadow-md-top flex">
             <h4 class="art-title text-xl font-bold">Op zoek naar je eerste bijbaantje? Hier moet je op letten.</h4>
             <div class="art-tag">
             </div>
             <img src="images/dummy-img1.png" alt="dummy image" class="h-12 w-12 rounded">
         </div>
-
-
-
-
-        <div class="article m-4 p-8 rounded-xl shadow-xl shadow-md-top flex">
-            <h4 class="art-title text-xl font-bold">Op zoek naar je eerste bijbaantje? Hier moet je op letten.</h4>
-            <div class="art-tag">
-            </div>
-            <img src="images/dummy-img1.png" alt="dummy image" class="h-12 w-12 rounded">
-        </div>
-
-
 
 
         <div class="article m-4 p-8 md:p-24 rounded-xl shadow-xl shadow-md-top flex">
@@ -103,8 +95,6 @@
             </div>
             <img src="images/dummy-img1.png" alt="dummy image" class="h-12 w-12 rounded">
         </div>
-
-
 
 
         <div class="article m-4 p-8 rounded-xl shadow-xl shadow-md-top flex">
