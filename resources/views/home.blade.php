@@ -44,8 +44,12 @@
         </section>
     </div>
 
-
-
+<!-- CREATE BUTTON -->
+   <section>
+    <div class="fixed bottom-6 right-5 p-3 rounded-full bg-blue-500 text-white font-bold text-2xl ">
+        <img src="icons/plus_icon.png">
+    </div>
+   </section>
 
     <!-- ARTICLELIST -->
     <section class="articleList">
