@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Age;
+use App\Models\Article;
+use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -19,7 +24,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $ages = Age::all();
+        $subjects = Subject::all();
+
+        return view('create', compact('ages', 'subjects'));
     }
 
     /**
@@ -27,7 +35,30 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user()->id;
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'ages' => 'required|array',
+            'subjects' => 'required|array',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        Storage::disk('public')->makeDirectory('game_images');
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('game_images', 'public');
+        }
+        $article = Article::create([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'image' => $imagePath,
+            'user_id' => $user,
+        ]);
+
+        $article->ages()->attach($data['ages']);
+        $article->subjects()->attach($data['subjects']);
+
+        return redirect()->route('home')->with('success', "$article->title is succesvol toegevoegd!");
+
     }
 
     /**
