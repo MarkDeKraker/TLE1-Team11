@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-home">
-    <div class="header fixed top-34 bg-white w-full">
+    <div class="fixed top-34 bg-white w-full">
 
         <!-- SEARCHBAR -->
         <section>
@@ -26,6 +26,7 @@
                     <button
                         class="p-2 m-2 text-2xl border-orange-500 hover:bg-orange-500  border-1 rounded-xl">Sociaal</button>
                 </div>
+
                 <div class="nav-age pr-4 pl-4 flex place-content-evenly">
                     <button
                         class="p-1 m-1 text-xl bg-orange-500 hover:bg-orange-300 rounded-2xl text-white font-bold">14-16
