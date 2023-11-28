@@ -23,8 +23,11 @@
     <section class="relative">
         <img class="h-full w-full" src="images/dummy-img.png">
         <div class="absolute top-0 left-0 w-full h-full bg-black opacity-40"></div>
+        
         <div class="text-white">
-            <img src="icons/arrow_back_left_icon.png" class="absolute top-5 left-5 w-8">
+            <a href="{{ url('/') }}" class="absolute top-5 left-5">
+                <img src="icons/arrow_back_left_icon.png" class="w-8" alt="Back">
+            </a>
             <img src="icons/share_arrow_icon.png" class="absolute top-6 right-5 w-7">
             <img src="icons/save_icon.png" class="absolute bottom-5 right-5 w-6">
         </div>
