@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('detail');
 });
 Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
 Route::post('/home', [ArticleController::class, 'store'])->name('article.store');
