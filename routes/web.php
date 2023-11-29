@@ -19,7 +19,11 @@ Route::get('/', function () {
     return view('detail');
 });
 Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
-Route::post('/home', [ArticleController::class, 'store'])->name('article.store');
-Auth::routes();
 
+Route::get('/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
+Route::put('/edit/{id}', [ArticleController::class, 'update'])->name('article.update');
+
+Route::post('/home', [ArticleController::class, 'store'])->name('article.store');
+
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

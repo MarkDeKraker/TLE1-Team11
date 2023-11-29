@@ -43,9 +43,9 @@ class ArticleController extends Controller
             'subjects' => 'required|array',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        Storage::disk('public')->makeDirectory('game_images');
+        Storage::disk('public')->makeDirectory('article_images');
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('game_images', 'public');
+            $imagePath = $request->file('image')->store('article_images', 'public');
         }
         $article = Article::create([
             'title' => $data['title'],
@@ -74,7 +74,10 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $article = Article::find($id);
+        $ages = Age::all();
+        $subjects = Subject::all();
+        return view('edit', compact('article', 'ages', 'subjects'));
     }
 
     /**
@@ -82,7 +85,42 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = Auth::user()->id;
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'ages' => 'required|array',
+            'subjects' => 'required|array',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Maak een map aan als deze niet bestaat
+        Storage::disk('public')->makeDirectory('article_images');
+
+        $article = Article::find($id); // Veronderstel dat $id de id is van het artikel dat je wilt bijwerken
+
+        // Controleer of het artikel bestaat
+        if (!$article) {
+            return redirect()->route('home')->with('error', 'Artikel niet gevonden.');
+        }
+
+        // Bijwerken van het artikel
+        $article->title = $data['title'];
+        $article->description = $data['description'];
+
+        // Als er een nieuw afbeeldingsbestand is geüpload, sla het op en werk het pad bij
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('article_images', 'public');
+            $article->image = $imagePath;
+        }
+
+        $article->save();
+
+        // Werk de leeftijden en onderwerpen bij
+        $article->ages()->sync($data['ages']);
+        $article->subjects()->sync($data['subjects']);
+
+        return redirect()->route('home')->with('success', "$article->title is succesvol bijgewerkt!");
     }
 
     /**
@@ -90,6 +128,10 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $article = Article::find($id);
+
+        $article->delete();
+
+        return redirect()->route('home')->with('success', "$article->title is succesvol verwijderd!");
     }
 }
