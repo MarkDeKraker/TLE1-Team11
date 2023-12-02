@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('detail');
 });
+
+Route::prefix('article')->group(function () {
+    Route::get('/', [ArticleController::class, 'index']);
+});
+
 Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
 
 Route::get('/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
