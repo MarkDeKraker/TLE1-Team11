@@ -15,9 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* * De Homepagina * */
+Route::get('/', [ArticleController::class, 'index'])->name('home');
+
+Route::get('//{id}', function () {
     return view('detail');
-});
+})->name('detail');
 
 Route::prefix('article')->group(function () {
     Route::get('/', [ArticleController::class, 'index']);
@@ -31,4 +34,4 @@ Route::put('/edit/{id}', [ArticleController::class, 'update'])->name('article.up
 Route::post('/home', [ArticleController::class, 'store'])->name('article.store');
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
