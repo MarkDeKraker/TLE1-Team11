@@ -29,7 +29,7 @@ class ArticleController extends Controller
         $ages = Age::all();
         $subjects = Subject::all();
 
-        return view('create', compact('ages', 'subjects'));
+        return view('article.create', compact('ages', 'subjects'));
     }
 
     /**
@@ -68,7 +68,10 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $article = Article::find($id);
+        $ages = Age::all();
+        $subjects = Subject::all();
+        return view('article.detail', compact('article', 'ages', 'subjects'));
     }
 
     /**
@@ -79,7 +82,7 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $ages = Age::all();
         $subjects = Subject::all();
-        return view('edit', compact('article', 'ages', 'subjects'));
+        return view('article.edit', compact('article', 'ages', 'subjects'));
     }
 
     /**
