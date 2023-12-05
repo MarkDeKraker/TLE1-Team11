@@ -1,4 +1,4 @@
-<a href="{{route('detail', $article)}}">
+<a href="{{ route('article.detail', $article->id) }}">
     <div class="article m-4 p-8 rounded-xl shadow-xl shadow-md-top flex justify-between">
 
             <div>

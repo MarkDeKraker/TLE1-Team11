@@ -15,23 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* * De Homepagina * */
-Route::get('/', [ArticleController::class, 'index'])->name('home');
-
-Route::get('//{id}', function () {
-    return view('detail');
-})->name('detail');
-
-Route::prefix('article')->group(function () {
-    Route::get('/', [ArticleController::class, 'index']);
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('index');
+    });
 });
 
-Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
 
-Route::get('/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
-Route::put('/edit/{id}', [ArticleController::class, 'update'])->name('article.update');
+Route::middleware('auth')->group(function () {
+    /* * De Homepagina * */
+    Route::get('/', [ArticleController::class, 'index'])->name('home');
+});
 
-Route::post('/home', [ArticleController::class, 'store'])->name('article.store');
+Route::prefix('article')->group(function () {
+    Route::get('/', [ArticleController::class, 'create'])->name('article.create');
+    Route::post('/', [ArticleController::class, 'store'])->name('article.store');
+
+    Route::get('/{id}', [ArticleController::class, 'show'])->name('article.detail');
+
+    Route::get('/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::put('/{id}/update', [ArticleController::class, 'update'])->name('article.update');
+
+    Route::delete('/{id}/delete', [ArticleController::class, 'destroy'])->name('article.delete');
+});
 
 Auth::routes();
-
