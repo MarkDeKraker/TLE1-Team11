@@ -1,0 +1,56 @@
+.articlelist{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: absolute;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    top: 30%;
+    overflow-y:scroll;
+}
+
+.article{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    max-width: 17rem;
+    height:22rem;
+    margin:1rem;
+    background: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.137);
+    border-radius:15px;
+}
+
+.art-title{
+ font-size: 1.2rem;
+ font-weight: 500;
+ margin: 1rem;
+}
+
+img.art-img{
+    height: auto;
+    width: 100%;  
+    border-radius: 0cap; 
+}
+
+@media (min-width: 1500px) {
+    .article {
+    min-width:20rem;
+    min-height:26rem;
+    }
+}
+
+
+@media (min-width: 1750px) {
+    .article {
+        min-width:20rem;
+        min-height: 28rem;
+    }
+
+    .art-title{
+        font-size: 1.8rem;
+    }
+} 
+
