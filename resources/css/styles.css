@@ -1,3 +1,9 @@
+.filter{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+}
 /* SEARCHBAR */
 .searchbar {
     margin: 1rem;
@@ -5,66 +11,97 @@
 
 .searchbar input {
     display: block;
+    margin-top: 5rem;
     padding: 0.75rem;
-    border: 1px solid #000; 
-    border-radius: 25px; 
+    width: 30rem;
+    border: 1px solid #0000003f; 
+    border-radius: 35px; 
     font-size: 1.5rem; 
 }
-/* NAV BUTTONS */
-/* Styling for individual buttons in the first row */
-.nav-tags{
-    display: flex;
-    justify-content: space-around;
-}
-.nav-tags-subject > div:first-child button {
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
-    color:black;
-    border: 1px solid #ff7e00; /* Border color */
-    border-radius: 0.5rem;
-    background-color: transparent;
-    cursor: pointer;
+
+.new-art-btn{
+    position: sticky;
+    position: absolute;
+    right: 1rem;
+    background-color: rgba(59, 131, 246);
+    width: 7rem;
+    text-align: center;
+    padding: 0.3rem;
+    border-radius: 15px;
+    color:white;
+    font-weight: 500;
 }
 
-.nav-tags-subject > div:first-child button:hover {
-    background-color: #ff7e00; /* Hover background color */
-    color: #fff; /* Hover text color */
+.art-btn-filter{
+    position: sticky;
+    position: absolute;
+    right: 10rem;
+    border: 1px solid rgb(234, 88, 12);
+    background-color: white;
+    color:rgb(234, 88, 12);
+    width: 7rem;
+    text-align: center;
+    padding: 0.3rem;
+    border-radius: 15px;
+    font-weight: 500;
 }
 
-/* Styling for the buttons in the second row */
-.nav-tags-subject > div:last-child {
-    padding: 0.5rem;
-    display: flex;
-    justify-content: space-around;
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 1;
+    width: 80%; 
+    max-width: 30rem; 
+    height:20rem;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Styling for individual buttons in the second row */
-.nav-tags-subject > div:last-child button {
-    padding: 0.25rem 0.5rem;
-    margin: 0.25rem;
-    font-size: 1rem;
-    background-color: #ff7e00;
-    color: #fff;
-    border: none;
-    border-radius: 1rem;
-    font-weight: bold;
-    cursor: pointer;
+.modal-content{
+    text-align: center;
+    margin: 3rem;
 }
 
-.nav-tags-subject > div:last-child button:hover {
-    background-color: #ff5c00;
+.close{
+    float: right;
 }
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+
+
+/* .modal{
+    background-color: white;
+    border: 1px solid red;
+}
+
+.modal-content{
+    text-align: center;
+} */
+
+/* NAV BUTTONS SUBJECTS*/
+
 /* ARTICLELIST */
 .articlelist{
     width:100%;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    position: absolute;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    top: 35%;
+    justify-content: center;
     overflow-y:scroll;
 }
 
@@ -76,8 +113,10 @@
     height:22rem;
     margin:1rem;
     background: white;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.137);
+    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.137); */
+    box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.1), 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
     border-radius:15px;
+    overflow: hidden;
 }
 
 .art-title{
@@ -87,27 +126,96 @@
 }
 
 img.art-img{
-    height: auto;
+    height: 100%;
     width: 100%;  
-    border-radius: 0cap; 
+    border-radius:  15px 15px 0px 0px ; 
+    object-fit: cover;
 }
+/* Small Screens (e.g., Phones) */
+@media (max-width: 460px) { 
+    .searchbar input {
+        width: 20rem;
+        margin-top: 1rem;
+    } 
 
-@media (min-width: 1500px) {
-    .article {
-    min-width:20rem;
-    min-height:26rem;
+    .nav-tags-subject > div:first-child button {
+        margin: 0 0.5rem;
+        padding: 0.1rem 0.2rem;
+        
     }
-}
 
+    .nav-tags-subject > div:last-child button {
+        padding: 0.25rem 0.75rem;
+        margin-top: 1.2rem;
+    }
 
-@media (min-width: 1750px) {
     .article {
-        min-width:20rem;
-        min-height: 28rem;
+        flex-wrap: nowrap;
+        margin: 0.5rem 1.3rem ;
+        width: 100%;
+        max-width: none;
+        height: 9rem;
     }
 
     .art-title{
+        font-size: 1rem;
+    }
+
+    img.art-img{
+        height: 100%;
+        max-width: 10rem;
+        margin: 0.5rem;
+        border-radius:  15px 15px 0px 0px ; 
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    .login-nav{
+        display: none;
+    }
+
+    .nav-link{
+        display: none;
+    }
+}
+
+/* Large Screens */
+@media (min-width: 651px) and (max-width: 1000px) {
+    .article {
+        min-height: 16rem;
+        margin: 1.5rem;
+    }
+
+    .art-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1001px) and (max-width: 1500px) {
+    .article {
+        min-width: 20rem;
+        min-height: 26rem;
+    }
+}
+
+/* Extra Extra Large Screens */
+@media (min-width: 1501px) and (max-width: 1750px) {
+    .article {
+        min-width: 20rem;
+        min-height: 26rem;
+    }
+}
+
+/* Extra Extra Extra Large Screens */
+@media (min-width: 1751px) {
+    .article {
+        min-width: 20rem;
+        min-height: 28rem;
+    }
+
+    .art-title {
         font-size: 1.8rem;
     }
-} 
+}
 
