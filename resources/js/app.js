@@ -16,3 +16,11 @@ window.addEventListener('click', function(event) {
         document.getElementById('overlay').style.display = 'none';
     }
 });
+
+document.getElementById('id-side-nav-open').addEventListener('click', function(){
+    document.getElementById('id-side-nav').style.display = 'block';
+})
+
+document.getElementById('id-side-nav-close').addEventListener('click', function(){
+    document.getElementById('id-side-nav').style.display = 'none';
+})

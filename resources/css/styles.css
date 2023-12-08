@@ -1,3 +1,52 @@
+body{
+    font-family:poppins;
+}
+
+.side-nav{
+    display: none;
+    transition: 0.5s;
+    height: 100%;
+    width: 20rem;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background-color:rgb(224, 91, 20);
+    border-radius:0 15px 15px 0;
+}
+
+.side-nav-close{
+    position: absolute;
+    top:0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.549);
+}
+
+.side-nav-close:hover{
+    color: rgba(0, 0, 0, 0.744);
+    transition: 0.3s;
+    cursor:pointer;
+}
+
+.side-nav a{
+    display: flex;
+    transition: 0.3s;
+    color: white;
+    font-size: 1.2rem;
+    margin: 3rem;
+}
+
+.side-nav a:hover{
+   background-color: antiquewhite;
+   color: black;
+   border-radius: 15px;
+   padding: 0.5rem 1rem 0.5rem 1rem;
+   transition: 0.3s;
+}
+
+
 .filter{
     position: sticky;
     top: 0;
@@ -20,30 +69,39 @@
 }
 
 .new-art-btn{
-    position: sticky;
-    position: absolute;
-    right: 1rem;
+    position: fixed;
+    bottom: 4rem;
+    right: 4rem;
     background-color: rgba(59, 131, 246);
-    width: 7rem;
+    width: 5rem;
+    height: 5rem;
     text-align: center;
-    padding: 0.3rem;
-    border-radius: 15px;
+    border-radius: 50%;
     color:white;
-    font-weight: 500;
+    font-size: 3rem;
+    font-family: poppins;
+    font-weight: 800;
 }
 
 .art-btn-filter{
-    position: sticky;
-    position: absolute;
-    right: 10rem;
     border: 1px solid rgb(234, 88, 12);
     background-color: white;
     color:rgb(234, 88, 12);
-    width: 7rem;
+    width: 6rem;
+    height: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 3rem;
     text-align: center;
-    padding: 0.3rem;
-    border-radius: 15px;
-    font-weight: 500;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.art-btn-filter:hover{
+    border: 2px solid rgb(234, 88, 12);
+}
+
+#openModalButton img {
+    color: rgb(234, 88, 12) ;
 }
 
 /* MODAL */
@@ -84,18 +142,43 @@
 }
 
 
-
-/* .modal{
-    background-color: white;
-    border: 1px solid red;
+/* FILTER BUTTONS SUBJECTS*/
+.close{
+    position: absolute;
+    top:1rem;
+    right: 1rem;
+    width: 1.5rem;
+    color: green;
+}
+.filter-form{
+    display: flex;
+    justify-content: space-around;
 }
 
-.modal-content{
-    text-align: center;
-} */
+.filter-subject,
+.filter-age{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
 
-/* NAV BUTTONS SUBJECTS*/
+.filter-title{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
 
+.filter-btn{
+    position: absolute;
+    bottom: 1.5rem;
+    right:1.5rem;
+
+    padding: 0.5rem;
+    background-color:rgb(234, 88, 12);
+    color: white;
+    font-weight: 600;
+    border-radius: 15px;
+}
 /* ARTICLELIST */
 .articlelist{
     width:100%;
@@ -103,6 +186,7 @@
     flex-wrap: wrap;
     justify-content: center;
     overflow-y:scroll;
+    margin-top: 1.5rem;
 }
 
 .article{
@@ -133,18 +217,27 @@ img.art-img{
 }
 /* Small Screens (e.g., Phones) */
 @media (max-width: 460px) { 
+    
+    .art-btn-filter{
+        margin-left: 4rem;
+        
+    }
+
+    .side-nav{
+        width: 18rem;
+    }
     .searchbar input {
         width: 20rem;
         margin-top: 1rem;
     } 
 
-    .nav-tags-subject > div:first-child button {
+    .filter-subject > div:first-child button {
         margin: 0 0.5rem;
         padding: 0.1rem 0.2rem;
         
     }
 
-    .nav-tags-subject > div:last-child button {
+    .filter-subject > div:last-child button {
         padding: 0.25rem 0.75rem;
         margin-top: 1.2rem;
     }
@@ -179,7 +272,7 @@ img.art-img{
     }
 }
 
-/* Large Screens */
+/* Ipad Screens */
 @media (min-width: 651px) and (max-width: 1000px) {
     .article {
         min-height: 16rem;
@@ -191,24 +284,12 @@ img.art-img{
     }
 }
 
-/* Extra Large Screens */
-@media (min-width: 1001px) and (max-width: 1500px) {
-    .article {
-        min-width: 20rem;
-        min-height: 26rem;
-    }
-}
 
-/* Extra Extra Large Screens */
-@media (min-width: 1501px) and (max-width: 1750px) {
-    .article {
-        min-width: 20rem;
-        min-height: 26rem;
+/*  Large Screens */
+@media (min-width: 1000px) {
+    .side-nav{
+        width: 20rem;
     }
-}
-
-/* Extra Extra Extra Large Screens */
-@media (min-width: 1751px) {
     .article {
         min-width: 20rem;
         min-height: 28rem;
@@ -217,5 +298,24 @@ img.art-img{
     .art-title {
         font-size: 1.8rem;
     }
+
 }
+
+
+/*  Extra Large Screens */
+@media (min-width: 1700px) {
+    .side-nav{
+        width: 23rem;
+    }
+    .article {
+        min-width: 20rem;
+        min-height: 28rem;
+    }
+
+    .art-title {
+        font-size: 1.8rem;
+    }
+
+}
+
 
