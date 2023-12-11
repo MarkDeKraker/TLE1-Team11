@@ -16,6 +16,10 @@ body{
     border-radius:0 15px 15px 0;
 }
 
+.icon-tabler a{
+    color:red;
+}
+
 .side-nav-close{
     position: absolute;
     top:0.5rem;
@@ -224,7 +228,7 @@ img.art-img{
     }
 
     .side-nav{
-        width: 18rem;
+        width: 100vw;
     }
     .searchbar input {
         width: 20rem;

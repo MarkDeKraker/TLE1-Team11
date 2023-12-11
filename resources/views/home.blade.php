@@ -25,12 +25,14 @@
 
                 <!-- SIDENAV -->
                 <div id="id-side-nav" class="side-nav">
+                    <div class="font-ranchers text-white text-3xl m-5">Young Choices
+                    </div>
                     <div href="javascript:void(0)" id="id-side-nav-close" class="side-nav-close">&times;</div>
-                    <a href="#" class"">Home</a>
-                    <a href="#" class"">Mijn profiel</a>
-                    <a href="#" class"">Opgeslagen</a>
-                    <a href="#" class"">Mijn Artikelen</a>
-                    <a href="#" class"">Admin</a>
+                    <a href="#" class""><img class="w-6 h-6 mr-1" src="icons/home.png">Home</a>
+                    <a href="#" class""><img class="w-6 h-6 mr-1" src="icons/user.png">Mijn profiel</a>
+                    <a href="#" class""><img class="w-6 h-6 mr-1" src="icons/saved.png">Opgeslagen</a>
+                    <a href="#" class""><img class="w-6 h-6 mr-1" src="icons/article.png">Mijn Artikelen</a>
+                    <a href="#" class""><img class="w-6 h-6 mr-1" src="icons/lock.png">Admin</a>
                 </div>
                 <span>
                     <img id="id-side-nav-open" class="w-8" src="icons/menu.png"" />
@@ -45,7 +47,7 @@
         <a class="nav-link m-3" href="{{ route('register') }}">{{ __('Register') }}</a>
         <img class="profile-nav w-7 h-7 m-3" src="icons/user.png" />
     </div>
-    </section
+    </section>
 
     <!-- SEARCHBAR -->
     <section class="flex justify-center">
