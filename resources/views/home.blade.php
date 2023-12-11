@@ -200,5 +200,5 @@
 </section>
 
 <!-- CREATE BUTTON -->
-<a href="#" class="new-art-btn">+</a>
+<a href="#" class="new-art-btn"><img src="icons/plus_icon.png"></a>
 </div>
