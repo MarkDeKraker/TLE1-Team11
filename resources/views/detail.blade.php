@@ -15,35 +15,35 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    @vite('resources/css/app.css')
+    @vite('resources/css/detail.css')
 </head>
 
 
 <body>
-    <section class="relative">
-        <img class="h-full w-full" src="images/dummy-img.png">
-        <div class="absolute top-0 left-0 w-full h-full bg-black opacity-40"></div>
+    <section class="dtl-banner">
+        <img class="dtl-img" src="images/dummy-img.png">
+        <div class="dtl-layover "></div>
         
-        <div class="text-white">
+        <div class="dtl-icons text-white ">
             <a href="{{ url('/') }}" class="absolute top-5 left-5">
-                <img src="icons/arrow_back_left_icon.png" class="w-8" alt="Back">
+                <img src="icons/arrow_back_left_icon.png" class="icon-back" alt="Back">
             </a>
-            <img src="icons/share_arrow_icon.png" class="absolute top-6 right-5 w-7">
-            <img src="icons/save_icon.png" class="absolute bottom-5 right-5 w-6">
+            <img src="icons/share_arrow_icon.png" class="icon-share">
+            <img src="icons/save_icon.png" class="icon-save">
         </div>
     </section>
 
-    <section class="flex font-bold m-2">
-        <h2 class="m-2">Tags:<h2>
-                <h2 class="m-1 p-1 border-1 border-green-600 rounded-xl">Werk<h2>
-                        <h2 class="m-1 p-1 bg-orange-500 rounded-xl text-white">14-16 jaar<h2>
+    <section class="dtl-tags">
+        <h2 class="">Tags:<h2>
+                <h2 class="dtl-tag-cat">Werk<h2>
+                        <h2 class="dtl-tag-age">14-16 jaar<h2>
     </section>
 
-    <section class="m-3 text-xl">
-        <p class="font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, doloremque quasi.
+    <section class="dtl-article">
+        <p class="dtl-article-header">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, doloremque quasi.
             Voluptas doloribus reiciendis praesentium eveniet soluta necessitatibus beatae accusantium?
         </p>
-        <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos fugit recusandae exercitationem
+        <p class="dtl-article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos fugit recusandae exercitationem
             quasi fugiat, molestiae quaerat similique saepe. Aperiam, saepe, doloremque quia quidem excepturi asperiores
             officiis corporis fugiat autem repellendus, consequatur ipsa fuga eos! Ipsa at sequi, tempore exercitationem
             incidunt reiciendis sapiente dolor cupiditate officiis nihil molestiae, distinctio sunt debitis ut assumenda
