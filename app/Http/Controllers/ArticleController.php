@@ -139,4 +139,20 @@ class ArticleController extends Controller
 
         return redirect()->route('home')->with('success', "$article->title is succesvol verwijderd!");
     }
+
+    public function change_active(string $id)
+    {
+        $article = Article::find($id);
+
+        // Sets the status of the article to active or inactive
+        if ($article->active == true) {
+            $article->active = false;
+        } else {
+            $article->active = true;
+        }
+
+        $article->update();
+
+        return redirect('/home');
+    }
 }
