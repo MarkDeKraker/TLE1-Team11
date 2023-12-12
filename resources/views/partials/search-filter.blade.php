@@ -37,6 +37,7 @@
                         </label>
                     @endforeach
                 </div>
+                
                 <div class="col-md-auto">
                     <button type="submit" class="btn btn-primary btn-sm">Filters Toevoegen</button>
                     <a href="{{ route('home') }}" class="btn btn-sm btn-secondary">Verwijder Filters</a>
