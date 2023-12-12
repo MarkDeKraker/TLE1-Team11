@@ -62,7 +62,7 @@
     <section class="flex flex-col">
         <div>
             <button id="openModalButton" class="art-btn-filter"> Filters</button>
-            <button href="#" class="new-art-btn">+ Nieuw Artikel</button>
+            <a href="#" class="new-art-btn">+ Nieuw Artikel</a>
         </div>
         <!-- <h2 class="ml-20 m-1 font-semibold">Populaire artikelen:</h2> -->
     </section>
