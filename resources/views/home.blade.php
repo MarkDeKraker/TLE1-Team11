@@ -18,7 +18,7 @@
 
 </html>
 <div class="container-home">
-    <div class="filters sticky top-0 bg-white w-full">
+    <div class="sticky top-0 bg-white w-full">
 
         <section class="navbar flex p-8 ">
             <div class="flex absolute left-5">
@@ -59,11 +59,12 @@
         </div>
     </section>
 
-    <section class="flex">
-        <h2 class="ml-20 m-1 font-semibold">Populaire artikelen</h2>
-        <button id="openModalButton" class="art-btn-filter"> Filters
-            <!-- <img class="w-4" src="icons/chevron-down.png" /> -->
-        </button>
+    <section class="flex flex-col">
+        <div>
+            <button id="openModalButton" class="art-btn-filter"> Filters</button>
+            <button href="#" class="new-art-btn">+ Nieuw Artikel</button>
+        </div>
+        <!-- <h2 class="ml-20 m-1 font-semibold">Populaire artikelen:</h2> -->
     </section>
 
     <!-- Modal -->
@@ -115,7 +116,9 @@
             Hier moet je op
             letten.</h4>
         <div class="art-tag"></div>
-        <img src="images/dummy-img1.png" alt="dummy image" class="art-img">
+        <div class="div-art-img">
+            <img src="images/dummy-img1.png" alt="dummy image" class="art-img">
+        </div>
     </div>
 
     <div class="article ">
@@ -198,7 +201,4 @@
         <img src="images/dummy-img4.png" alt="dummy image" class="art-img">
     </div>
 </section>
-
-<!-- CREATE BUTTON -->
-<a href="#" class="new-art-btn"><img src="icons/plus_icon.png"></a>
 </div>

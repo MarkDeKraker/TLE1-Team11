@@ -73,18 +73,14 @@ body{
 }
 
 .new-art-btn{
-    position: fixed;
-    bottom: 4rem;
-    right: 4rem;
-    background-color: rgba(59, 131, 246);
-    width: 5rem;
-    height: 5rem;
-    text-align: center;
-    border-radius: 50%;
-    color:white;
-    font-size: 3rem;
-    font-family: poppins;
-    font-weight: 800;
+    background-color: rgb(0, 94, 255);
+    color: white;
+    width: 10rem;
+    height: 2rem;
+    border-radius: 15px;
+    font-weight: 700;
+    margin-left: 1rem ;
+
 }
 
 .art-btn-filter{
@@ -93,8 +89,7 @@ body{
     color:rgb(234, 88, 12);
     width: 6rem;
     height: 2rem;
-    margin-bottom: 1rem;
-    margin-left: 3rem;
+    margin-left: 4rem;
     text-align: center;
     border-radius: 20px;
     font-weight: 700;
@@ -213,8 +208,9 @@ body{
  margin: 1rem;
 }
 
+
 img.art-img{
-    height: 100%;
+    height: auto;
     width: 100%;  
     border-radius:  15px 15px 0px 0px ; 
     object-fit: cover;
