@@ -14,11 +14,48 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::all();
+//        filters en search results ophalen
+        $selectedSubjects = $request->input('subjects', []);
+        $selectedAges = $request->input('ages', []);
+        $searchInput = $request->input('search');
+        $clearFilters = $request->has('clear_filters');
 
-        return view('home', compact('articles'));
+//        artikelen ophalen
+        $query = Article::with('subjects','ages');
+
+        if (!empty($selectedSubjects)) {
+            $query->whereHas('subjects', function ($q) use ($selectedSubjects) {
+                $q->whereIn('subject_id', $selectedSubjects);
+            });
+        }
+
+        if (!empty($selectedAges)) {
+            $query->whereHas('ages', function ($q) use ($selectedAges) {
+                $q->whereIn('age_id', $selectedAges);
+            });
+        }
+
+        if ($clearFilters) {
+            // Handle the clear filters request
+            return redirect()->route('home')->except(['subjects', 'ages']);
+        }
+
+        if ($searchInput) {
+            // Add search condition to the query
+            $query->where(function ($query) use ($searchInput) {
+                $query->where('title', 'like', "%$searchInput%")
+                    ->orWhere('description', 'like', "%$searchInput%");
+            });
+        }
+
+
+        $articles = $query->get();
+        $ages = Age::all();
+        $subjects = Subject::all();
+
+        return view('home', compact('articles', 'ages', 'subjects','selectedAges', 'selectedSubjects', 'searchInput'));
     }
 
     /**
