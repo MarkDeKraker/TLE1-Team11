@@ -24,8 +24,8 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     /* * De Homepagina * */
-    Route::get('/', [ArticleController::class, 'index'])->name('home');
-});
+    });
+Route::get('/', [ArticleController::class, 'index'])->name('home');
 
 Route::prefix('article')->group(function () {
     Route::get('/', [ArticleController::class, 'create'])->name('article.create');
