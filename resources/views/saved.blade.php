@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    {{ $articles }}
     <div class="container-home">
         <div class="filters sticky top-0 bg-white w-full">
 
@@ -113,7 +114,7 @@
         </div>
     </div>
 
-    <!-- ARTICLELIST -->
+    <!-- FAVORITE ARTICLELIST -->
     <section class="articlelist">
         <div class="article ">
             <h4 class="art-title">Op zoek naar je eerste bijbaantje?
@@ -127,14 +128,6 @@
             <h4 class="art-title">Op zoek naar je eerste bijbaantje?
                 Hier moet je op
                 letten.</h4>
-            <div class="art-tag"></div>
-            <img src="images/dummy-img2.png" alt="dummy image" class="art-img">
-        </div>
-
-        <div class="article ">
-            <h4 class="art-title">Op zoek naar je eerste bijbaantje?
-                Hier moet je op
-                letten.</h4>
             <div class="art-tag">
             </div>
             <img src="images/dummy-img3.png" alt="dummy image" class="art-img">
@@ -146,51 +139,6 @@
                 letten.</h4>
             <div class="art-tag">
             </div>
-            <img src="images/dummy-img4.png" alt="dummy image" class="art-img">
-        </div>
-
-        <div class="article ">
-            <h4 class="art-title">Op zoek naar je eerste bijbaantje?
-                Hier moet je op
-                letten.</h4>
-            <div class="art-tag">
-            </div>
-            <img src="images/dummy-img2.png" alt="dummy image" class="art-img">
-        </div>
-
-        <div class="article ">
-            <h4 class="art-title">Op zoek naar je eerste bijbaantje?
-                Hier moet je op
-                letten.</h4>
-            <div class="art-tag">
-            </div>
-            <img src="images/dummy-img3.png" alt="dummy image" class="art-img">
-        </div>
-
-        <div class="article ">
-            <h4 class="art-title">Op zoek naar je eerste bijbaantje?
-                Hier moet je op
-                letten.</h4>
-            <div class="art-tag">
-            </div>
-            <img src="images/dummy-img4.png" alt="dummy image" class="art-img">
-        </div>
-
-        <div class="article ">
-            <h4 class="art-title">Op zoek naar je eerste bijbaantje?
-                Hier moet je op
-                letten.</h4>
-            <div class="art-tag">
-            </div>
-            <img src="images/dummy-img1.png" alt="dummy image" class="art-img">
-        </div>
-
-        <div class="article ">
-            <h4 class="art-title">Op zoek naar je eerste bijbaantje?
-                Hier moet je op
-                letten.</h4>
-            <div class="art-tag">
-            </div>
             <img src="images/dummy-img2.png" alt="dummy image" class="art-img">
         </div>
 
@@ -201,6 +149,15 @@
             <div class="art-tag">
             </div>
             <img src="images/dummy-img4.png" alt="dummy image" class="art-img">
+        </div>
+
+        <div class="article ">
+            <h4 class="art-title">Op zoek naar je eerste bijbaantje?
+                Hier moet je op
+                letten.</h4>
+            <div class="art-tag">
+            </div>
+            <img src="images/dummy-img2.png" alt="dummy image" class="art-img">
         </div>
     </section>
 
