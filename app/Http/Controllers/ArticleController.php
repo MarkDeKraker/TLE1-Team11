@@ -59,6 +59,53 @@ class ArticleController extends Controller
     }
 
     /**
+     * Display a listing of saved resources.
+     */
+    public function saved(Request $request)
+    {
+//        filters en search results ophalen
+        $selectedSubjects = $request->input('subjects', []);
+        $selectedAges = $request->input('ages', []);
+        $searchInput = $request->input('search');
+        $clearFilters = $request->has('clear_filters');
+
+//        favoriete artikelen ophalen
+        $query = Article::with('subjects','ages')->where('saved', true);
+
+        if (!empty($selectedSubjects)) {
+            $query->whereHas('subjects', function ($q) use ($selectedSubjects) {
+                $q->whereIn('subject_id', $selectedSubjects);
+            });
+        }
+
+        if (!empty($selectedAges)) {
+            $query->whereHas('ages', function ($q) use ($selectedAges) {
+                $q->whereIn('age_id', $selectedAges);
+            });
+        }
+
+        if ($clearFilters) {
+            // Handle the clear filters request
+            return redirect()->route('home')->except(['subjects', 'ages']);
+        }
+
+        if ($searchInput) {
+            // Add search condition to the query
+            $query->where(function ($query) use ($searchInput) {
+                $query->where('title', 'like', "%$searchInput%")
+                    ->orWhere('description', 'like', "%$searchInput%");
+            });
+        }
+
+
+        $articles = $query->get();
+        $ages = Age::all();
+        $subjects = Subject::all();
+
+        return view('saved', compact('articles', 'ages', 'subjects','selectedAges', 'selectedSubjects', 'searchInput'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -191,5 +238,21 @@ class ArticleController extends Controller
         $article->update();
 
         return redirect('/home');
+    }
+
+    public function toggle_save(string $id)
+    {
+        $article = Article::find($id);
+
+        // Sets the status of the article to active or inactive
+        if ($article->saved == true) {
+            $article->saved = false;
+        } else {
+            $article->saved = true;
+        }
+
+        $article->update();
+
+        return back();
     }
 }
