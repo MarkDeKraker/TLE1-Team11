@@ -10,7 +10,7 @@
         <div class="absolute top-0 left-0 w-full h-full bg-black opacity-40"></div>
 
         <div class="text-white">
-            <a href="{{ url('/') }}" class="absolute top-5 left-5">
+            <a href="{{ back() }}" class="absolute top-5 left-5">
                 <img src="icons/arrow_back_left_icon.png" class="w-8" alt="Back">
             </a>
             <img src="icons/share_arrow_icon.png" class="absolute top-6 right-5 w-7">
@@ -20,7 +20,6 @@
 
     <section class="flex font-bold m-2">
         <h2 class="m-2">Tags:<h2>
-
         @foreach ($article->subjects as $article_subject)
             <h2 class="m-1 p-1 border-1 border-green-600 rounded-xl">{{ $article_subject->subject }}<h2>
         @endforeach
@@ -34,6 +33,14 @@
             <button onclick="myFunction()" onmouseout="outFunc()">Share URL</button>
         </div>
         <input type="text" value="{{ url()->current() }}" class="copy-input" id="share-input">
+        
+        @auth
+            <form action="{{ route('article.toggle-save', $article->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <button class="m-1 p-1 rounded-xl {{ $article->saved ? "bg-orange-500 text-white" : "bg-white text-orange-500" }}">{{ $article->saved ? "Saved" : "Save" }}</button>
+            </form>
+        @endauth
     </section>
 
     <section class="m-3 text-xl">
