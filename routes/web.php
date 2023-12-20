@@ -24,8 +24,6 @@ Route::middleware('guest')->group(function () {
 
 // Logged in
 Route::middleware('auth')->group(function () {
-    Route::get('/home', [ArticleController::class, 'index'])->name('home');
-
     Route::get('/saved', [ArticleController::class, 'saved'])->name('saved');
 
     Route::prefix('article')->group(function () {
@@ -40,6 +38,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // No auth required
+Route::get('/home', [ArticleController::class, 'index'])->name('home');
+
 Route::prefix('article')->group(function () {
     Route::get('/{id}', [ArticleController::class, 'show'])->name('article.detail');
 });
