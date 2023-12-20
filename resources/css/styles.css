@@ -67,9 +67,9 @@ body{
     margin-top: 5rem;
     padding: 0.75rem;
     width: 30rem;
-    border: 1px solid #0000003f; 
-    border-radius: 35px; 
-    font-size: 1.5rem; 
+    border: 1px solid #0000003f;
+    border-radius: 35px;
+    font-size: 1.5rem;
 }
 
 .new-art-btn{
@@ -117,8 +117,8 @@ body{
     transform: translate(-50%, -50%);
     background-color: white;
     z-index: 1;
-    width: 80%; 
-    max-width: 30rem; 
+    width: 80%;
+    max-width: 30rem;
     height:20rem;
     padding: 20px;
     border-radius: 10px;
@@ -145,6 +145,37 @@ body{
     z-index: 1;
 }
 
+/* SHARE BUTTON */
+.copy-div {
+    position: relative;
+    display: inline-block;
+  }
+
+  .copy-div .copy-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .copy-div .copy-text::after {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+  }
+
+  .copy-div:hover .copy-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .copy-input {
+    visibility: hidden;
+  }
 
 /* FILTER BUTTONS SUBJECTS*/
 .close{
@@ -215,16 +246,16 @@ body{
 
 img.art-img{
     height: 100%;
-    width: 100%;  
-    border-radius:  15px 15px 0px 0px ; 
+    width: 100%;
+    border-radius:  15px 15px 0px 0px ;
     object-fit: cover;
 }
 /* Small Screens (e.g., Phones) */
-@media (max-width: 460px) { 
-    
+@media (max-width: 460px) {
+
     .art-btn-filter{
         margin-left: 4rem;
-        
+
     }
 
     .side-nav{
@@ -233,12 +264,12 @@ img.art-img{
     .searchbar input {
         width: 20rem;
         margin-top: 1rem;
-    } 
+    }
 
     .filter-subject > div:first-child button {
         margin: 0 0.5rem;
         padding: 0.1rem 0.2rem;
-        
+
     }
 
     .filter-subject > div:last-child button {
@@ -262,7 +293,7 @@ img.art-img{
         height: 100%;
         max-width: 10rem;
         margin: 0.5rem;
-        border-radius:  15px 15px 0px 0px ; 
+        border-radius:  15px 15px 0px 0px ;
         object-fit: cover;
         border-radius: 15px;
     }
