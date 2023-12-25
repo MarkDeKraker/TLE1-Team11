@@ -10,7 +10,7 @@
         <div class="absolute top-0 left-0 w-full h-full bg-black opacity-40"></div>
 
         <div class="text-white">
-            <a href="{{ back() }}" class="absolute top-5 left-5">
+            <a href="{{ route('home') }}" class="absolute top-5 left-5">
                 <img src="icons/arrow_back_left_icon.png" class="w-8" alt="Back">
             </a>
             <img src="icons/share_arrow_icon.png" class="absolute top-6 right-5 w-7">
@@ -33,7 +33,7 @@
             <button onclick="myFunction()" onmouseout="outFunc()">Share URL</button>
         </div>
         <input type="text" value="{{ url()->current() }}" class="copy-input" id="share-input">
-        
+
         @auth
             <form action="{{ route('article.toggle-save', $article->id) }}" method="POST">
                 @csrf
