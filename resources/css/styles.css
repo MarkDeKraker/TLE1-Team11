@@ -73,13 +73,20 @@ body{
 }
 
 .new-art-btn{
+    position:absolute;
+    right: 5rem;
     background-color: rgb(0, 94, 255);
     color: white;
     width: 10rem;
-    height: 2rem;
+    padding: 0.6rem;
     border-radius: 15px;
     font-weight: 700;
     margin-left: 1rem ;
+}
+
+.new-art-btn:hover{
+    background-color: rgba(0, 94, 255, 0.74); 
+    transition: 0.3s;
 }
 
 .art-btn-filter{
@@ -87,15 +94,17 @@ body{
     background-color: white;
     color:rgb(234, 88, 12);
     width: 6rem;
-    height: 2rem;
+    padding: 0.5rem;
     margin-left: 4rem;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 15px;
     font-weight: 700;
 }
 
 .art-btn-filter:hover{
-    border: 2px solid rgb(234, 88, 12);
+    border: 1px solid rgba(234, 90, 12, 0.548);
+    color:rgba(234, 90, 12, 0.76);
+    transition: 0.3s;
 }
 
 #openModalButton img {
@@ -215,12 +224,7 @@ img.art-img{
     object-fit: cover;
 }
 /* Small Screens (e.g., Phones) */
-@media (max-width: 460px) { 
-    
-    .art-btn-filter{
-        margin-left: 4rem;
-        
-    }
+@media (max-width: 460px) {
 
     .side-nav{
         width: 100vw;

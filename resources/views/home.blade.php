@@ -51,7 +51,7 @@
 
     <!-- SEARCHBAR -->
     <section class="flex justify-center">
-        <div class="searchbar m-3 mt-12">
+        <div class="searchbar mb-16">
             <form action="#">
                 <input class="search-input" type="text" placeholder="Search..." name="search">
                 <button type="submit"></button>
@@ -60,11 +60,10 @@
     </section>
 
     <section class="flex flex-col">
-        <div>
+        <div class="">
             <button id="openModalButton" class="art-btn-filter"> Filters</button>
-            <a href="#" class="new-art-btn">+ Nieuw Artikel</a>
         </div>
-        <!-- <h2 class="ml-20 m-1 font-semibold">Populaire artikelen:</h2> -->
+        <a href="#" class="new-art-btn">+ Nieuw Artikel</a>
     </section>
 
     <!-- Modal -->
