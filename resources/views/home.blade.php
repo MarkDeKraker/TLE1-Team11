@@ -17,7 +17,7 @@
         <!-- <img class="w-4" src="icons/chevron-down.png" /> -->
     </button>
     <!-- CREATE BUTTON -->
-    <a href="{{ route('article.create') }}" class="new-art-btn"><img src="icons/plus_icon.png"></a>
+    <a href="{{ route('article.create') }}" class="new-art-btn">Nieuw Artikel +</a>
 </section>
 
 <!-- Modal -->
