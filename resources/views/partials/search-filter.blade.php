@@ -1,12 +1,11 @@
-<form method="GET" action="{{route('home')}}">
+<form method="GET" action="">
     <div class="fixed top-34 bg-white w-full">
 
         <!-- SEARCHBAR -->
         <section>
             <div class="searchbar m-3">
                 <label class="w-full">
-                    <input class="block w-full p-3 ps-10 border border-orange-400 border-1 rounded-full text-xl"
-                           type="text" placeholder="Zoeken naar titels en beschrijvingen..." name="search">
+                    <input id="search-input" class="search-input" type="text" name="search" placeholder="Zoeken naar titels en beschrijvingen..." value="{{ !empty($searchInput) ? $searchInput : null }}">
                 </label>
             </div>
         </section>

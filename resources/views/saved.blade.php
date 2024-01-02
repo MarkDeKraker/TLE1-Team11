@@ -3,12 +3,7 @@
 @section('content')
     <!-- SEARCHBAR -->
     <section class="flex justify-center">
-        <div class="searchbar m-3 mt-12">
-            <form action="#">
-                <input class="search-input" type="text" placeholder="Search..." name="search">
-                <button type="submit"></button>
-            </form>
-        </div>
+        @include('partials.search-filter')
     </section>
 
     <section class="flex">
