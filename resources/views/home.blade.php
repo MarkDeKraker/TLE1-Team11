@@ -63,7 +63,8 @@
         <div class="">
             <button id="openModalButton" class="art-btn-filter"> Filters</button>
         </div>
-        <a href="#" class="new-art-btn">+ Nieuw Artikel</a>
+        Route::get('/', [ArticleController::class, 'create'])->name('article.create');
+        <a href="article.create" class="new-art-btn">+ Nieuw Artikel</a>
     </section>
 
     <!-- Modal -->
