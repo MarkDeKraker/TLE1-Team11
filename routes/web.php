@@ -16,11 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Logged out
-Route::middleware('guest')->group(function () {
-    Route::get('/', function () {
-        return view('home');
-    });
-});
+Route::get('/', [ArticleController::class, 'index'])->name('home');
 
 // Logged in
 Route::middleware('auth')->group(function () {

@@ -3,84 +3,49 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- CSRF Token -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoungChoices</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <!-- <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> -->
-
-    <!-- Scripts -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @vite ('resources/css/styles.css')
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+    <!-- <script type="module" src="{{ mix('js/app.js') }}" defer></script> -->
 </head>
 
 <body>
-    <div id="app">
-        <nav class=" fixed w-full navbar navbar-expand-md navbar-light bg-white p-10">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <div class="container-home">
+        <nav class="navbar flex p-8 ">
+            <div class="filters sticky top-0 bg-white w-full">
+                <div class="flex absolute left-5">
+                    <!-- SIDENAV -->
+                    <div id="id-side-nav" class="side-nav">
+                        <div class="font-ranchers text-white text-3xl m-5">Young Choices</div>
+                        <div href="javascript:void(0)" id="id-side-nav-close" class="side-nav-close">&times;</div>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link href=" {{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @endif
-
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-
-                                    {{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endguest
-                    </ul>
+                        <a href="{{ route('home') }}" class=""><img class="w-6 h-6 mr-1" src="icons/home.png">Home</a>
+                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/user.png">Mijn profiel</a>
+                        <a href="{{ route('saved') }}" class=""><img class="w-6 h-6 mr-1" src="icons/saved.png">Opgeslagen</a>
+                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/article.png">Mijn Artikelen</a>
+                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/lock.png">Admin</a>
+                    </div>
+                    <span>
+                        <img id="id-side-nav-open" class="w-8" src="icons/menu.png"" />
+                    </span>
+                    <a href="{{ route('home') }}" class="title-nav font-ranchers text-orange-600 text-3xl ml-8">Young Choices</a>
+                </div>
+                <div class="login-register flex absolute right-5 font-medium">
+                    @auth
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="login-nav m-3">{{ __('Logout') }}</button>
+                        </form>
+                    @else
+                        <a class="login-nav m-3" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link m-3" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endauth
+                    <img class="profile-nav w-7 h-7 m-3" src="icons/user.png" />
                 </div>
             </div>
         </nav>

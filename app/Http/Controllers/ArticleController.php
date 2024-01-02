@@ -50,7 +50,6 @@ class ArticleController extends Controller
             });
         }
 
-
         $articles = $query->get();
         $ages = Age::all();
         $subjects = Subject::all();
