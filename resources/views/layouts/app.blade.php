@@ -10,7 +10,6 @@
     @vite ('resources/css/styles.css')
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    <!-- <script type="module" src="{{ mix('js/app.js') }}" defer></script> -->
 </head>
 
 <body>
