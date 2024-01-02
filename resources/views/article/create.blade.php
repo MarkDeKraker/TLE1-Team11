@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @section('title')
 Create
 @endsection
@@ -25,7 +26,7 @@ Create
                             </span>
                             @enderror
                         </div>
-
+                        <br>
                         <div class="form-group">
                             <label for="description">Tekst</label>
                             <textarea name="description" id="description"
@@ -36,6 +37,7 @@ Create
                             </span>
                             @enderror
                         </div>
+                        <br>
                         <div class="form-group">
                             <label for="ages">Leeftijden</label>
                             <p>Hold 'CTRL' to select multiple</p>
@@ -51,6 +53,7 @@ Create
                             </span>
                             @enderror
                         </div>
+                        <br>
                         <div class="form-group">
                             <label for="subjects">Onderwerpen</label>
                             <p>Hold 'CTRL' to select multiple</p>
@@ -66,6 +69,7 @@ Create
                             </span>
                             @enderror
                         </div>
+                        <br>
                         <div class="form-group">
                             <label for="image">Omslagfoto</label>
                             <input type="file" name="image" id="image"
@@ -76,11 +80,11 @@ Create
                             </span>
                             @enderror
                         </div>
+                        <br>
                         <div id="editor">
-                
+                        <br>
                         </div>
-
-
+                        <br>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
 
