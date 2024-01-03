@@ -12,7 +12,6 @@
 </section>
 
 <section class="flex">
-    <h2 class="ml-20 m-1 font-semibold">Populaire artikelen</h2>
     <button id="openModalButton" class="art-btn-filter">Filters
         <!-- <img class="w-4" src="icons/chevron-down.png" /> -->
     </button>
