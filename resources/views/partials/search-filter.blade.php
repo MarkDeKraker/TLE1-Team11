@@ -1,46 +1,52 @@
-<form method="GET" action="">
-    <div class="fixed top-34 bg-white w-full">
 
-        <!-- SEARCHBAR -->
-        <section>
-            <div class="searchbar m-3">
+    <!-- SEARCHBAR -->
+    <section class="flex justify-center">
+        <div class="searchbar m-3">
+            <form method="GET" action="">
                 <label class="w-full">
                     <input id="search-input" class="search-input" type="text" name="search" placeholder="Zoeken naar titels en beschrijvingen..." value="{{ !empty($searchInput) ? $searchInput : null }}">
                 </label>
-            </div>
-        </section>
+            </form>
+        </div>
+    </section>
 
-        <!-- NAV -->
-        <section>
-            <div class="nav-tags">
-                <div class="nav-subjects pr-4 pl-4 flex place-content-evenly">
-                    @foreach($subjects as $subject)
-                        <label class="inline-flex items-center">
-                            <div class="p-2 m-2 text-2xl border-orange-500 hover:bg-orange-500 border-1 rounded-xl cursor-pointer
-                                    transition-all duration-300 ease-in-out">
-                                <input type="checkbox" name="subjects[]" value="{{$subject->id}}">
-                                {{$subject->subject}}
-                            </div>
-                        </label>
-                    @endforeach
-                </div>
+    <section class="flex">
+        <h2 class="ml-20 m-1 font-semibold">Artikelen</h2>
+        <button id="openModalButton" class="art-btn-filter">Filters</button>
+    </section>
 
-                <div class="nav-age pr-4 pl-4 flex place-content-evenly">
-                    @foreach($ages as $age)
-                        <label class="inline-flex items-center">
-                            <div class="p-1 m-1 text-xl bg-orange-500 hover:bg-orange-300 rounded-2xl text-white font-bold cursor-pointer
-                                    transition-all duration-300 ease-in-out">
-                                <input type="checkbox" name="ages[]" value="{{$age->id}}">
-                                {{$age->age}} Jaar
-                            </div>
-                        </label>
-                    @endforeach
+    <!-- Modal -->
+    <div id="overlay" class="overlay"></div>
+
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal"><img src="icons/close.png" /></span>
+            <form class="filter-form" action="" method="get">
+                <div class="filter-col">
+                    <div class="filter-row">
+                        <div class="filter-col">
+                            <div class="filter-title">Categorie</div>
+                            @foreach($subjects as $subject)
+                                <label>
+                                    <input class="sub-btn" type="checkbox" name="subjects[]" value="{{$subject->id}}" {{ in_array($subject->id, $selectedSubjects) ? "checked" : "" }}> {{$subject->subject}}
+                                </label>
+                            @endforeach
+                        </div>
+
+                        <div class="filter-col">
+                            <div class="filter-title">Leeftijd</div>
+                            @foreach($ages as $age)
+                                <label>
+                                    <input type="checkbox" name="ages[]" value="{{$age->id}}" {{ in_array($age->id, $selectedAges) ? "checked" : "" }}> {{$age->age}} Jaar
+                                </label>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="filter-col">
+                        <button type="submit" class="filter-btn">filters toepassen</button>
+                    </div>
                 </div>
-                <div class="col-md-auto">
-                    <button type="submit" class="btn btn-primary btn-sm">Filters Toevoegen</button>
-                    <a href="{{ route('home') }}" class="btn btn-sm btn-secondary">Verwijder Filters</a>
-                </div>
-            </div>
-        </section>
+            </form>
+        </div>
     </div>
-</form>

@@ -119,7 +119,6 @@ body{
     z-index: 1;
     width: 80%;
     max-width: 30rem;
-    height:20rem;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -127,7 +126,7 @@ body{
 
 .modal-content{
     text-align: center;
-    margin: 3rem;
+    margin: 1rem;
 }
 
 .close{
@@ -188,13 +187,7 @@ body{
 .filter-form{
     display: flex;
     justify-content: space-around;
-}
-
-.filter-subject,
-.filter-age{
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+    text-align: left;
 }
 
 .filter-title{
@@ -203,17 +196,31 @@ body{
     margin-bottom: 1rem;
 }
 
-.filter-btn{
-    position: absolute;
-    bottom: 1.5rem;
-    right:1.5rem;
-
+.filter-col{
+    display: flex;
+    flex-direction: column;
     padding: 0.5rem;
-    background-color:rgb(234, 88, 12);
+}
+
+.filter-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-btn{
+    padding: 0.5rem;
+    background-color: rgb(234, 88, 12) !important;
     color: white;
     font-weight: 600;
     border-radius: 15px;
 }
+
+.filter-link{
+    padding: 0.5rem;
+    border-radius: 15px;
+    text-decoration: underline;
+}
+
 /* ARTICLELIST */
 .articlelist{
     width:100%;
