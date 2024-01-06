@@ -13,10 +13,8 @@
 <!-- ARTICLELIST -->
 <section class="articlelist">
     @foreach ($articles as $article)
-        @include('partials.article-list')
+    @include('partials.article-list')
     @endforeach
 </section>
 
-<!-- CREATE BUTTON -->
-<a href="{{ route('article.create') }}" class="new-art-btn"><img src="icons/plus_icon.png"></a>
 @endsection
