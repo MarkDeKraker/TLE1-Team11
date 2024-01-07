@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,9 @@ Route::middleware('auth')->group(function () {
         Route::put('/{id}/toggle-save', [ArticleController::class, 'toggle_save'])->name('article.toggle-save');
     });
 });
+
+Route::get('/admin/index', [AdminController::class,'index'])->name('admin.index');
+Route::post('/admin/index/{user}', [AdminController::class,'assign'])->name('admin.assign');
 
 // No auth required
 Route::get('/home', [ArticleController::class, 'index'])->name('home');

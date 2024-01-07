@@ -26,11 +26,16 @@
                         <a href="{{ route('home') }}" class=""><img class="w-6 h-6 mr-1" src="icons/home.png">Home</a>
                         <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/user.png">Mijn profiel</a>
                         <a href="{{ route('saved') }}" class=""><img class="w-6 h-6 mr-1" src="icons/saved.png">Opgeslagen</a>
-                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/article.png">Mijn Artikelen</a>
-                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/lock.png">Admin</a>
+
+                        @hasrole('moderator')
+                            <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/article.png">Mijn Artikelen</a>
+                        @endhasrole
+                        @hasrole('admin')
+                            <a href="{{ route('admin.index') }}" class=""><img class="w-6 h-6 mr-1" src="icons/lock.png">Admin</a>
+                        @endhasrole
                     </div>
                     <span>
-                        <img id="id-side-nav-open" class="w-8" src="icons/menu.png"" />
+                        <img id="id-side-nav-open" class="w-8" src="icons/menu.png"/>
                     </span>
                     <a href="{{ route('home') }}" class="title-nav font-ranchers text-orange-600 text-3xl ml-8">Young Choices</a>
                 </div>

@@ -69,5 +69,7 @@
 </section>
 
 <!-- CREATE BUTTON -->
-<a href="{{ route('article.create') }}" class="new-art-btn"><img src="icons/plus_icon.png"></a>
+    @hasrole('moderator')
+        <a href="{{ route('article.create') }}" class="new-art-btn"><img src="icons/plus_icon.png"></a>
+    @endhasrole
 @endsection
