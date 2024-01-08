@@ -9,7 +9,6 @@ use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 
 class ArticleController extends Controller
@@ -122,10 +121,11 @@ class ArticleController extends Controller
             'subjects' => 'required|array',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        Storage::disk('public')->makeDirectory('article_images');
+
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('article_images', 'public');
+            $imagePath = base64_encode(file_get_contents($request->file('image')->getRealPath()));
         }
+
         $article = Article::create([
             'title' => $data['title'],
             'description' => $data['description'],
@@ -178,9 +178,6 @@ class ArticleController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Maak een map aan als deze niet bestaat
-        Storage::disk('public')->makeDirectory('article_images');
-
         $article = Article::find($id); // Veronderstel dat $id de id is van het artikel dat je wilt bijwerken
 
         // Controleer of het artikel bestaat
@@ -194,7 +191,7 @@ class ArticleController extends Controller
 
         // Als er een nieuw afbeeldingsbestand is geüpload, sla het op en werk het pad bij
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('article_images', 'public');
+            $imagePath = base64_encode(file_get_contents($request->file('image')->getRealPath()));
             $article->image = $imagePath;
         }
 
