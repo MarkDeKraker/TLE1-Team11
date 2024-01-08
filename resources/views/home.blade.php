@@ -13,7 +13,7 @@
 <!-- ARTICLELIST -->
 <section class="articlelist">
     @foreach ($articles as $article)
-    @include('partials.article-list')
+        @include('partials.article-list')
     @endforeach
 </section>
 
