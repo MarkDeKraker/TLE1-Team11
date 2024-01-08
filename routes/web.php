@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');
         Route::put('/{id}/update', [ArticleController::class, 'update'])->name('article.update');
-
+        Route::delete('/{id}/delete', [ArticleController::class, 'destroy'])->name('article.destroy');
         Route::put('/{id}/toggle-save', [ArticleController::class, 'toggle_save'])->name('article.toggle-save');
     });
 });

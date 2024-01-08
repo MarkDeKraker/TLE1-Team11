@@ -10,6 +10,7 @@
     @vite ('resources/css/styles.css')
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    <script src="https://kit.fontawesome.com/3e59291876.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

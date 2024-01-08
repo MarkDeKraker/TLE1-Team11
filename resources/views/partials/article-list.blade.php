@@ -12,7 +12,14 @@
         </div>
         @hasrole('admin')
         <div class="ml-4 mt-2">
-            <button><img src="icons/delete.png" alt="delete button" class=" bg-red-600 w-8 rounded-2xl mr-3 hover:bg-red-700"></button>
+            <form action="{{ route('article.destroy', $article->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="bg-red-600 w-8 rounded-2xl mr-3 p-2 hover:bg-red-700">
+                    <i class="fa-solid fa-trash text-amber-50"></i>
+                </button>
+            </form>
             <button><img src="icons/delete.png" alt="edit button" class=" bg-blue-600 w-8 rounded-2xl hover:bg-blue-700"></button>
         </div>
         @endhasrole
