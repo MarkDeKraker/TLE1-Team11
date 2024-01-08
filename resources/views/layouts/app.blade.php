@@ -10,7 +10,6 @@
     @vite ('resources/css/styles.css')
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    <!-- <script type="module" src="{{ mix('js/app.js') }}" defer></script> -->
 </head>
 
 <body>
@@ -35,7 +34,11 @@
                         @endhasrole
                     </div>
                     <span>
+
                         <img id="id-side-nav-open" class="w-8" src="icons/menu.png"/>
+
+                        <img id="id-side-nav-open" class="side-nav-menu" src="icons/menu.png"" />
+
                     </span>
                     <a href="{{ route('home') }}" class="title-nav font-ranchers text-orange-600 text-3xl ml-8">Young Choices</a>
                 </div>

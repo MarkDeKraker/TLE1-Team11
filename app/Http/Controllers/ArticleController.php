@@ -33,7 +33,6 @@ class ArticleController extends Controller
         $selectedSubjects = $request->input('subjects', []);
         $selectedAges = $request->input('ages', []);
         $searchInput = $request->input('search');
-        $clearFilters = $request->has('clear_filters');
 
 //        artikelen ophalen
         $query = Article::with('subjects','ages');
@@ -48,11 +47,6 @@ class ArticleController extends Controller
             $query->whereHas('ages', function ($q) use ($selectedAges) {
                 $q->whereIn('age_id', $selectedAges);
             });
-        }
-
-        if ($clearFilters) {
-            // Handle the clear filters request
-            return redirect()->route('home')->except(['subjects', 'ages']);
         }
 
         if ($searchInput) {
@@ -79,7 +73,6 @@ class ArticleController extends Controller
         $selectedSubjects = $request->input('subjects', []);
         $selectedAges = $request->input('ages', []);
         $searchInput = $request->input('search');
-        $clearFilters = $request->has('clear_filters');
 
 //        favoriete artikelen ophalen
         $query = Article::with('subjects','ages')->where('saved', true);
@@ -95,20 +88,6 @@ class ArticleController extends Controller
                 $q->whereIn('age_id', $selectedAges);
             });
         }
-
-        if ($clearFilters) {
-            // Handle the clear filters request
-            return redirect()->route('home')->except(['subjects', 'ages']);
-        }
-
-        if ($searchInput) {
-            // Add search condition to the query
-            $query->where(function ($query) use ($searchInput) {
-                $query->where('title', 'like', "%$searchInput%")
-                    ->orWhere('description', 'like', "%$searchInput%");
-            });
-        }
-
 
         $articles = $query->get();
         $ages = Age::all();

@@ -8,12 +8,11 @@ body{
     height: 100%;
     width: 20rem;
     position: fixed;
-    z-index: 1;
+    z-index: 999;
     top: 0;
     left: 0;
     overflow: hidden;
     background-color:rgb(224, 91, 20);
-    border-radius:0 15px 15px 0;
 }
 
 .icon-tabler a{
@@ -32,6 +31,14 @@ body{
     color: rgba(0, 0, 0, 0.744);
     transition: 0.3s;
     cursor:pointer;
+}
+
+.side-nav-menu{
+    width: 2rem;
+}
+
+.side-nav-menu:hover{
+    width: 2.2rem;
 }
 
 .side-nav a{
@@ -72,19 +79,19 @@ body{
     font-size: 1.5rem;
 }
 
-.new-art-btn{
-    position: fixed;
-    bottom: 4rem;
-    right: 4rem;
-    background-color: rgba(59, 131, 246);
-    width: 5rem;
-    height: 5rem;
-    text-align: center;
-    border-radius: 50%;
-    color:white;
-    font-size: 3rem;
-    font-family: poppins;
-    font-weight: 800;
+.new-art-btn{ 
+    background-color: rgba(38, 140, 217);
+    color: white;
+    width: 9rem;
+    padding: 0.6rem;
+    border-radius: 15px;
+    font-weight: 700;
+    margin-left: 1rem ;
+}
+
+.new-art-btn:hover{
+    background-color:rgb(25, 91, 141); 
+    transition: 0.3s;
 }
 
 .art-btn-filter{
@@ -92,22 +99,18 @@ body{
     background-color: white;
     color:rgb(234, 88, 12);
     width: 6rem;
-    height: 2rem;
-    margin-bottom: 1rem;
-    margin-left: 3rem;
+    padding: 0.5rem;
+    margin-left: 4rem;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 15px;
     font-weight: 700;
 }
 
 .art-btn-filter:hover{
-    border: 2px solid rgb(234, 88, 12);
+    border: 1px solid rgba(234, 90, 12, 0.548);
+    color:rgba(234, 90, 12, 0.76);
+    transition: 0.3s;
 }
-
-#openModalButton img {
-    color: rgb(234, 88, 12) ;
-}
-
 /* MODAL */
 .modal {
     display: none;
@@ -119,7 +122,6 @@ body{
     z-index: 1;
     width: 80%;
     max-width: 30rem;
-    height:20rem;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -127,7 +129,7 @@ body{
 
 .modal-content{
     text-align: center;
-    margin: 3rem;
+    margin: 1rem;
 }
 
 .close{
@@ -188,13 +190,7 @@ body{
 .filter-form{
     display: flex;
     justify-content: space-around;
-}
-
-.filter-subject,
-.filter-age{
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+    text-align: left;
 }
 
 .filter-title{
@@ -203,17 +199,31 @@ body{
     margin-bottom: 1rem;
 }
 
-.filter-btn{
-    position: absolute;
-    bottom: 1.5rem;
-    right:1.5rem;
-
+.filter-col{
+    display: flex;
+    flex-direction: column;
     padding: 0.5rem;
-    background-color:rgb(234, 88, 12);
+}
+
+.filter-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-btn{
+    padding: 0.5rem;
+    background-color: rgb(234, 88, 12) !important;
     color: white;
     font-weight: 600;
     border-radius: 15px;
 }
+
+.filter-link{
+    padding: 0.5rem;
+    border-radius: 15px;
+    text-decoration: underline;
+}
+
 /* ARTICLELIST */
 .articlelist{
     width:100%;
@@ -255,14 +265,13 @@ img.art-img{
 
     .art-btn-filter{
         margin-left: 4rem;
-
     }
 
     .side-nav{
         width: 100vw;
     }
     .searchbar input {
-        width: 20rem;
+        width: 24rem;
         margin-top: 1rem;
     }
 
@@ -304,6 +313,11 @@ img.art-img{
 
     .nav-link{
         display: none;
+    }
+  
+    .art-btn-filter{
+        padding: 0.5rem;
+        margin-left: 2rem;  
     }
 }
 
