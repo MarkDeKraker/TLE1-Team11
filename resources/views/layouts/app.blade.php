@@ -51,7 +51,6 @@
                         <a class="login-nav m-3" href="{{ route('login') }}">{{ __('Login') }}</a>
                         <a class="nav-link m-3" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endauth
-                    <img class="profile-nav w-7 h-7 m-3" src="icons/user.png" />
                 </div>
             </div>
         </nav>
