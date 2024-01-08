@@ -119,7 +119,7 @@ class ArticleController extends Controller
             'description' => 'required|string',
             'ages' => 'required|array',
             'subjects' => 'required|array',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         if ($request->hasFile('image')) {
@@ -175,7 +175,7 @@ class ArticleController extends Controller
             'description' => 'required|string',
             'ages' => 'required|array',
             'subjects' => 'required|array',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $article = Article::find($id); // Veronderstel dat $id de id is van het artikel dat je wilt bijwerken
