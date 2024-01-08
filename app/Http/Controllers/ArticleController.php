@@ -5,30 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Age;
 use App\Models\Article;
 use App\Models\Subject;
-use App\Models\User;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Spatie\Permission\Models\Role;
 
 class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, User $user)
+    public function index(Request $request)
     {
-        $adminUser = User::find(1);
-        $users = User::all();
-        $adminRole = Role::findByName('admin');
-        $moderatorRole = Role::findByName('moderator');
-        $userRole = Role::findByName('user');
-
-        $adminUser->assignRole($adminRole, $userRole, $moderatorRole);
-        foreach ($users as $user) {
-            $user->assignRole($userRole);
-        }
 //        filters en search results ophalen
         $selectedSubjects = $request->input('subjects', []);
         $selectedAges = $request->input('ages', []);
@@ -61,7 +48,7 @@ class ArticleController extends Controller
         $ages = Age::all();
         $subjects = Subject::all();
 
-        return view('home', compact('articles', 'ages', 'subjects','selectedAges', 'selectedSubjects', 'searchInput', 'user'));
+        return view('home', compact('articles', 'ages', 'subjects','selectedAges', 'selectedSubjects', 'searchInput'));
     }
 
     /**
@@ -98,11 +85,9 @@ class ArticleController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * @throws AuthorizationException
      */
-    public function create(Article $article)
+    public function create()
     {
-        $this->authorize('create', $article);
         $ages = Age::all();
         $subjects = Subject::all();
 
@@ -120,12 +105,13 @@ class ArticleController extends Controller
             'description' => 'required|string',
             'ages' => 'required|array',
             'subjects' => 'required|array',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:255',
         ]);
-        Storage::disk('public')->makeDirectory('article_images');
+
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('article_images', 'public');
+            $imagePath = base64_encode(file_get_contents($request->file('image')->getRealPath()));
         }
+
         $article = Article::create([
             'title' => $data['title'],
             'description' => $data['description'],
@@ -153,11 +139,9 @@ class ArticleController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * @throws AuthorizationException
      */
-    public function edit(string $id, Article $article)
+    public function edit(string $id)
     {
-        $this->authorize('edit', $article);
         $article = Article::find($id);
         $ages = Age::all();
         $subjects = Subject::all();
@@ -178,9 +162,6 @@ class ArticleController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Maak een map aan als deze niet bestaat
-        Storage::disk('public')->makeDirectory('article_images');
-
         $article = Article::find($id); // Veronderstel dat $id de id is van het artikel dat je wilt bijwerken
 
         // Controleer of het artikel bestaat
@@ -194,7 +175,7 @@ class ArticleController extends Controller
 
         // Als er een nieuw afbeeldingsbestand is geüpload, sla het op en werk het pad bij
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('article_images', 'public');
+            $imagePath = base64_encode(file_get_contents($request->file('image')->getRealPath()));
             $article->image = $imagePath;
         }
 
@@ -209,11 +190,9 @@ class ArticleController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @throws AuthorizationException
      */
-    public function destroy(string $id, Article $article)
+    public function destroy(string $id)
     {
-        $this->authorize('delete', $article);
         $article = Article::find($id);
 
         $article->delete();
