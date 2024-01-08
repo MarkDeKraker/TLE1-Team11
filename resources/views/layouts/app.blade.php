@@ -23,9 +23,7 @@
                         <div href="javascript:void(0)" id="id-side-nav-close" class="side-nav-close">&times;</div>
 
                         <a href="{{ route('home') }}" class=""><img class="w-6 h-6 mr-1" src="icons/home.png">Home</a>
-                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/user.png">Mijn profiel</a>
                         <a href="{{ route('saved') }}" class=""><img class="w-6 h-6 mr-1" src="icons/saved.png">Opgeslagen</a>
-                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/article.png">Mijn Artikelen</a>
                         <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/lock.png">Admin</a>
                     </div>
                     <span>
@@ -44,7 +42,6 @@
                         <a class="login-nav m-3" href="{{ route('login') }}">{{ __('Login') }}</a>
                         <a class="nav-link m-3" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endauth
-                    <img class="profile-nav w-7 h-7 m-3" src="icons/user.png" />
                 </div>
             </div>
         </nav>
