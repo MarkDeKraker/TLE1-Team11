@@ -120,7 +120,7 @@ class ArticleController extends Controller
             'description' => 'required|string',
             'ages' => 'required|array',
             'subjects' => 'required|array',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
         Storage::disk('public')->makeDirectory('article_images');
         if ($request->hasFile('image')) {
@@ -175,7 +175,7 @@ class ArticleController extends Controller
             'description' => 'required|string',
             'ages' => 'required|array',
             'subjects' => 'required|array',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         // Maak een map aan als deze niet bestaat
