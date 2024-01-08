@@ -10,6 +10,10 @@
                 <ul class="inline-flex">{{$subject->subject}},</ul>
             @endforeach
         </div>
+        <div class="ml-4 mt-2">
+            <button><img src="icons/delete.png" alt="delete button" class=" bg-red-600 w-8 rounded-2xl mr-3 hover:bg-red-700"></button>
+            <button><img src="icons/delete.png" alt="edit button" class=" bg-blue-600 w-8 rounded-2xl hover:bg-blue-700"></button>
+        </div>
         <div class="art-tag"></div>
         <img src="data:image/jpeg;base64,{{ $article->image }}" alt="{{ $article->title }} Abeelding" class="h-12 w-12 rounded">
     </div>
