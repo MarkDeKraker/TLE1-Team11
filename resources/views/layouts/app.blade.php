@@ -23,15 +23,15 @@
                         <div class="font-ranchers text-white text-3xl m-5">Young Choices</div>
                         <div href="javascript:void(0)" id="id-side-nav-close" class="side-nav-close">&times;</div>
 
-                        <a href="{{ route('home') }}" class=""><img class="w-6 h-6 mr-1" src="icons/home.png">Home</a>
-                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/user.png">Mijn profiel</a>
-                        <a href="{{ route('saved') }}" class=""><img class="w-6 h-6 mr-1" src="icons/saved.png">Opgeslagen</a>
+                        <a href="{{ route('home') }}" class=""><i class="fa-solid fa-house text-white"> </i>Home</a>
+                        <a href="#" class=""><i class="fa-solid fa-user"></i>Mijn profiel</a>
+                        <a href="{{ route('saved') }}" class=""><i class="fa-solid fa-heart"></i>Opgeslagen</a>
 
                         @hasrole('moderator')
-                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/article.png">Mijn Artikelen</a>
+                        <a href="#" class=""><i class="fa-solid fa-bookmark"></i>Mijn Artikelen</a>
                         @endhasrole
                         @hasrole('admin')
-                        <a href="{{ route('admin.index') }}" class=""><img class="w-6 h-6 mr-1" src="icons/lock.png">Admin</a>
+                        <a href="{{ route('admin.index') }}" class=""><i class="fa-solid fa-user-tie"></i>Admin</a>
                         @endhasrole
                     </div>
                     <div id="id-side-nav-open" class="side-nav-menu text-2xl"><i class="fa-solid fa-bars"></i></div>
