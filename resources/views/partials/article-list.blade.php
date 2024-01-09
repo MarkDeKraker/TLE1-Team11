@@ -2,8 +2,8 @@
     <div class="article m-4 p-8 rounded-xl shadow-xl shadow-md-top flex justify-between">
         <div>
             <div class="w-full relative">
-                <img src="data:image/jpeg;base64,{{ $article->image }}" class="object-cover object-center w-full h-full z-0" alt="{{ $article->title }} Abeelding">
-                <div class="absolute top-0 left-0 w-full h-full z-10"></div>
+                <img src="data:image/jpeg;base64,{{ $article->image }}" class="object-cover object-center w-full h-full" alt="{{ $article->title }} Abeelding">
+                <div class="absolute top-0 left-0 w-full h-full"></div>
             </div>
             <h4 class="art-title text-xl font-bold">{{ $article->title }}</h4>
             <p>{{ $article->description }}</p>
