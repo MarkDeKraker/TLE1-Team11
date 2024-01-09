@@ -12,34 +12,39 @@
         </div>
     </section>
 
-    <section class="flex font-bold m-2">
-        <h2 class="m-2">Tags:</h2>
-        @foreach ($article->subjects as $article_subject)
-            <h2 class="m-1 p-1 border-1 border-green-600 rounded-xl">{{ $article_subject->subject }}</h2>
-        @endforeach
+    <section class="flex items-center justify-center w-screen">
+        <div class="w-full sm:w-1/2 relative">
+            <div class="flex font-bold m-2 ">
+            <h2 class="m-2">Tags:</h2>
+            @foreach ($article->subjects as $article_subject)
+                <h2 class="m-1 p-1 border-1 border-green-600 rounded-xl">{{ $article_subject->subject }}</h2>
+            @endforeach
 
-        @foreach ($article->ages as $article_age)
-            <h2 class="m-1 p-1 bg-orange-500 rounded-xl text-white">{{ $article_age->age }} jaar</h2>
-        @endforeach
+            @foreach ($article->ages as $article_age)
+                <h2 class="m-1 p-1 bg-orange-500 rounded-xl text-white">{{ $article_age->age }} jaar</h2>
+            @endforeach
 
-        <div class="copy-div">
-            <span class="copy-text" id="share-text">Copy to clipboard</span>
-            <button onclick="myFunction()" onmouseout="outFunc()">Share URL</button>
+            <div class="copy-div">
+                <span class="copy-text" id="share-text">Copy to clipboard</span>
+                <button onclick="myFunction()" onmouseout="outFunc()">Share URL</button>
+            </div>
+            <input type="text" value="{{ url()->current() }}" class="copy-input" id="share-input">
+
+            @auth
+                <form action="{{ route('article.toggle-save', $article->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button class="m-1 p-1 rounded-xl {{ $article->saved ? "bg-orange-500 text-white" : "bg-white text-orange-500" }}">{{ $article->saved ? "Saved" : "Save" }}</button>
+                </form>
+            @endauth
+            </div>
+
+
+            <section class="m-3 text-xl">
+                <p class="font-bold">{{ $article->title }}</p>
+                <p class="mt-4">{{ $article->description }}</p>
+            </section>
         </div>
-        <input type="text" value="{{ url()->current() }}" class="copy-input" id="share-input">
-
-        @auth
-            <form action="{{ route('article.toggle-save', $article->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <button class="m-1 p-1 rounded-xl {{ $article->saved ? "bg-orange-500 text-white" : "bg-white text-orange-500" }}">{{ $article->saved ? "Saved" : "Save" }}</button>
-            </form>
-        @endauth
-    </section>
-
-    <section class="m-3 text-xl">
-        <p class="font-bold">{{ $article->title }}</p>
-        <p class="mt-4">{{ $article->description }}</p>
     </section>
 
     <script>
