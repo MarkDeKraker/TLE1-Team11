@@ -14,12 +14,12 @@
 </head>
 
 <body>
-    <div class="container-home">
+    <div class="container-home z-1000 relative">
         <nav class="navbar flex p-8 ">
             <div class="filters sticky top-0 bg-white w-full">
                 <div class="flex absolute left-5">
                     <!-- SIDENAV -->
-                    <div id="id-side-nav" class="side-nav">
+                    <div id="id-side-nav" class="side-nav z-1000">
                         <div class="font-ranchers text-white text-3xl m-5">Young Choices</div>
                         <div href="javascript:void(0)" id="id-side-nav-close" class="side-nav-close">&times;</div>
 
@@ -52,7 +52,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 z-10">
             @yield('content')
         </main>
     </div>

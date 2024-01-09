@@ -2,8 +2,13 @@ body{
     font-family:poppins;
 }
 
-
-
+main {
+    z-index: 10;
+}
+.container-home {
+    z-index: 1000;
+    position: relative;
+}
 .side-nav{
     display: none;
     transition: 0.5s;
@@ -15,6 +20,9 @@ body{
     left: 0;
     overflow: hidden;
     background-color:rgb(224, 91, 20);
+}
+.side-nav a {
+    z-index: 1001;
 }
 
 .icon-tabler a{
