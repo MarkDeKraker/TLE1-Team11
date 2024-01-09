@@ -10,18 +10,22 @@
                 <ul class="inline-flex">{{$subject->subject}},</ul>
             @endforeach
         </div>
-        @hasrole('admin')
-        <div class="ml-4 mt-2">
-            <form action="{{ route('article.destroy', $article->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
+        @hasrole('moderator')
+            @if(auth()->user()->id === $article->user_id || auth()->user()->id === 1)
+                <div class="ml-4 mt-2 flex">
+                    <form action="{{ route('article.destroy', $article->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
 
-                <button type="submit" class="bg-red-600 w-8 rounded-2xl mr-3 p-2 hover:bg-red-700">
-                    <i class="fa-solid fa-trash text-amber-50"></i>
-                </button>
-            </form>
-            <button><img src="icons/delete.png" alt="edit button" class=" bg-blue-600 w-8 rounded-2xl hover:bg-blue-700"></button>
-        </div>
+                        <button type="submit" class="bg-red-600 w-8 rounded-2xl mr-3 p-2 hover:bg-red-700">
+                            <i class="fa-solid fa-trash text-amber-50"></i>
+                        </button>
+                    </form>
+                    <a href="{{ route('article.edit', $article->id) }}">
+                        <div class=" bg-blue-600 w-8 mr-3 p-2 rounded-2xl hover:bg-blue-700"><i class="text-amber-50 fa-solid fa-pencil"></i></div>
+                    </a>
+                </div>
+            @endif
         @endhasrole
         <div class="art-tag"></div>
         <img src="data:image/jpeg;base64,{{ $article->image }}" alt="{{ $article->title }} Abeelding" class="h-12 w-12 rounded">

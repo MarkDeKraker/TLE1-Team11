@@ -28,17 +28,13 @@
                         <a href="{{ route('saved') }}" class=""><img class="w-6 h-6 mr-1" src="icons/saved.png">Opgeslagen</a>
 
                         @hasrole('moderator')
-                            <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/article.png">Mijn Artikelen</a>
+                        <a href="#" class=""><img class="w-6 h-6 mr-1" src="icons/article.png">Mijn Artikelen</a>
                         @endhasrole
                         @hasrole('admin')
-                            <a href="{{ route('admin.index') }}" class=""><img class="w-6 h-6 mr-1" src="icons/lock.png">Admin</a>
+                        <a href="{{ route('admin.index') }}" class=""><img class="w-6 h-6 mr-1" src="icons/lock.png">Admin</a>
                         @endhasrole
                     </div>
-                    <span>
-
-                        <img id="id-side-nav-open" class="side-nav-menu" src="icons/menu.png" />
-
-                    </span>
+                    <div id="id-side-nav-open" class="side-nav-menu text-2xl"><i class="fa-solid fa-bars"></i></div>
                     <a href="{{ route('home') }}" class="title-nav font-ranchers text-orange-600 text-3xl ml-8">Young Choices</a>
                 </div>
                 <div class="login-register flex absolute right-5 font-medium">
