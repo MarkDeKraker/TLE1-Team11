@@ -13,6 +13,7 @@
     <section class="flex">
         <h2 class="ml-20 m-1 font-semibold">Artikelen</h2>
         <button id="openModalButton" class="art-btn-filter">Filters</button>
+        <a href="{{ route('article.create') }}" class="new-art-btn">Nieuw artikel</a>
     </section>
 
     <!-- Modal -->

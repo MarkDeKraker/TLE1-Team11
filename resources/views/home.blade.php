@@ -4,6 +4,7 @@
 <!-- SEARCHBAR & FILTERS -->
 @include('partials.search-filter')
 
+
 @if ((!empty($selectedSubjects)) || (!empty($selectedAges)))
 <section class="ml-20">
     <a href="{{ route('home') }}" class="filter-link">filters verwijderen</a>
@@ -17,9 +18,5 @@
     @endforeach
 </section>
 
-<!-- CREATE BUTTON -->
-@hasrole('moderator')
-    <a href="{{ route('article.create') }}" class="new-art-btn"><img src="icons/plus_icon.png"></a>
-@endhasrole
 @endsection
 
