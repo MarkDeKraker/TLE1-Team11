@@ -1,5 +1,5 @@
 <a href="{{ route('article.detail', $article->id) }}">
-    <div class="article relative m-4 p-8 rounded-xl shadow-xl shadow-md-top flex justify-between">
+    <div class="article m-4 p-8 rounded-xl shadow-xl shadow-md-top flex justify-between">
         <div>
             <div class="w-full relative">
                 <img src="data:image/jpeg;base64,{{ $article->image }}" class="object-cover object-center w-full h-full z-0" alt="{{ $article->title }} Abeelding">
