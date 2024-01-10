@@ -18,7 +18,7 @@
                         @method('PUT')
 
                         <div class="form-group">
-                            <label for="title">Title</label>
+                            <label class="font-bold text-xl" for="title">Titel</label>
                             <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $article->title) }}">
                             @error('title')
                             <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Text</label>
+                            <label class="font-bold text-xl" for="description">Tekst</label>
                             {{-- <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror">{{ old('description', $article->description) }}</textarea> --}}
                             <input name="description" id="description" type="hidden" value="{{ $article->description }}">
                             <div id="editor" class="form-control @error('description') is-invalid @enderror"></div>
@@ -39,35 +39,55 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="ages">Ages</label>
-                            <p>Hold 'CTRL' to select multiple</p>
-                            <select name="ages[]" id="ages" class="form-control @error('ages') is-invalid @enderror" multiple>
-                                @foreach ($ages as $age)
-                                    <option value="{{ $age->id }}" {{ in_array($age->id, $article->ages->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $age->age }}</option>
-                                @endforeach
-                            </select>
+                            <label class="font-bold text-xl">Leeftijden</label>
+                            @foreach ($ages as $age)
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        name="ages[]"
+                                        value="{{ $age->id }}"
+                                        id="age_{{ $age->id }}"
+                                        {{ in_array($age->id, $article->ages->pluck('id')->toArray()) ? 'checked' : '' }}
+                                    >
+                                    <label class="form-check-label" for="age_{{ $age->id }}">
+                                        {{ $age->age }}
+                                    </label>
+                                </div>
+                            @endforeach
                             @error('ages')
-                            <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <div class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </div>
                             @enderror
                         </div>
+
                         <div class="form-group">
-                            <label for="subjects">Subjects</label>
-                            <p>Hold 'CTRL' to select multiple</p>
-                            <select name="subjects[]" id="subjects" class="form-control @error('subjects') is-invalid @enderror" multiple>
-                                @foreach ($subjects as $subject)
-                                    <option value="{{ $subject->id }}" {{ in_array($subject->id, $article->subjects->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $subject->subject }}</option>
-                                @endforeach
-                            </select>
+                            <label class="font-bold text-xl">Onderwerpen</label>
+                            @foreach ($subjects as $subject)
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        name="subjects[]"
+                                        value="{{ $subject->id }}"
+                                        id="subject_{{ $subject->id }}"
+                                        {{ in_array($subject->id, $article->subjects->pluck('id')->toArray()) ? 'checked' : '' }}
+                                    >
+                                    <label class="form-check-label" for="subject_{{ $subject->id }}">
+                                        {{ $subject->subject }}
+                                    </label>
+                                </div>
+                            @endforeach
                             @error('subjects')
-                            <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <div class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </div>
                             @enderror
                         </div>
+
                         <div class="form-group">
-                            <label for="image">Image</label>
+                            <label  class="font-bold text-xl" for="image">Omslagfoto</label>
                             <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
                             @error('image')
                             <span class="invalid-feedback" role="alert">

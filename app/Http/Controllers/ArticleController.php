@@ -166,9 +166,11 @@ class ArticleController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @throws AuthorizationException
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id, Article $article)
     {
+        $this->authorize('edit', $article);
         $user = Auth::user()->id;
         $data = $request->validate([
             'title' => 'required|string|max:255',
