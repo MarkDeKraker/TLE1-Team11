@@ -13,7 +13,7 @@
                         <a href="{{ route('article.edit', $article->id) }}">
                             <div class=" bg-blue-600 w-8 mr-3 p-2 rounded-2xl hover:bg-blue-700"><i class="text-amber-50 fa-solid fa-pencil"></i></div>
                         </a>
-                        <form action="{{ route('article.destroy', $article->id) }}" method="POST">
+                        <form action="{{ route('article.destroy', $article->id) }}" method="POST" id="delete-form-{{ $article->id }}">
                             @csrf
                             @method('DELETE')
 
