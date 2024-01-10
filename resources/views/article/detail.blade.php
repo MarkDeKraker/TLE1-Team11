@@ -42,7 +42,7 @@
 
             <section class="m-3 text-xl">
                 <p class="font-bold">{{ $article->title }}</p>
-                <p class="mt-4">{{ $article->description }}</p>
+                <p class="mt-4">{!! $article->description !!}</p>
             </section>
         </div>
     </section>

@@ -3,7 +3,7 @@
         <div>
             <img src="data:image/jpeg;base64,{{ $article->image }}" class="object-cover object-center w-full max-h-fit" alt="{{ $article->title }} Abeelding">
             <h4 class="art-title text-xl font-bold">{{ $article->title }}</h4>
-            <p>{{ $article->description }}</p>
+            <p>{!! $article->description !!}</p>
             @foreach($article->ages as $age)
                 <ul class="inline-flex">{{$age->age}},</ul>
             @endforeach

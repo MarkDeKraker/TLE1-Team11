@@ -26,18 +26,23 @@ Create
                             </span>
                             @enderror
                         </div>
+
                         <br>
+
                         <div class="form-group">
                             <label for="description">Tekst</label>
-                            <textarea name="description" id="description"
-                                class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                            {{-- <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea> --}}
+                            <input name="description" id="description" type="hidden">
+                            <div id="editor" class="form-control @error('description') is-invalid @enderror"></div>
                             @error('description')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
+
                         <br>
+
                         <div class="form-group">
                             <label for="ages">Leeftijden</label>
                             <p>Hold 'CTRL' to select multiple</p>
@@ -53,7 +58,9 @@ Create
                             </span>
                             @enderror
                         </div>
+
                         <br>
+
                         <div class="form-group">
                             <label for="subjects">Onderwerpen</label>
                             <p>Hold 'CTRL' to select multiple</p>
@@ -69,7 +76,9 @@ Create
                             </span>
                             @enderror
                         </div>
+
                         <br>
+
                         <div class="form-group">
                             <label for="image">Omslagfoto</label>
                             <input type="file" name="image" id="image"
@@ -80,11 +89,9 @@ Create
                             </span>
                             @enderror
                         </div>
+
                         <br>
-                        <div id="editor">
-                        <br>
-                        </div>
-                        <br>
+
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
 
@@ -100,6 +107,11 @@ Create
 <script>
     var quill = new Quill('#editor', {
         theme: 'snow'
+    });
+
+    quill.on('text-change', function() {
+        var justHtml = quill.root.innerHTML;
+        document.getElementById('description').value = justHtml;
     });
 </script>
 @endsection
