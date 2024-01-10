@@ -26,14 +26,13 @@
                             <a href="{{ route('article.edit', $article->id) }}">
                                 <div class=" bg-blue-600 w-8 mr-3 p-2 rounded-2xl hover:bg-blue-700"><i class="text-amber-50 fa-solid fa-pencil"></i></div>
                             </a>
-                            <form action="{{ route('article.destroy', $article->id) }}" method="POST">
+                            <form action="{{ route('article.destroy', $article->id) }}" method="POST" id="delete-form-{{ $article->id }}">
                                 @csrf
                                 @method('DELETE')
-
-                                <button type="submit" class="bg-red-600 w-8 rounded-2xl mr-3 p-2 hover:bg-red-700" onclick="confirmDelete('{{ $article->id }}')">
-                                    <i class="fa-solid fa-trash text-amber-50"></i>
-                                </button>
                             </form>
+                            <button type="button" class="bg-red-600 w-8 rounded-2xl mr-3 p-2 hover:bg-red-700" onclick="confirmDelete('{{ $article->id }}')">
+                                <i class="fa-solid fa-trash text-amber-50"></i>
+                            </button>
                         </div>
                     @endif
                 @endhasrole
@@ -43,11 +42,11 @@
 </a>
 
 <script>
-    function confirmDelete(subjectId) {
+    function confirmDelete(articleId) {
         var confirmation = confirm('Are you sure you want to delete this article?');
 
         if (confirmation) {
-            document.getElementById('delete-form-' + subjectId).submit();
+            document.getElementById('delete-form-' + articleId).submit();
         }
     }
 </script>
