@@ -4,7 +4,6 @@
 <!-- SEARCHBAR & FILTERS -->
 @include('partials.search-filter')
 
-
 @if ((!empty($selectedSubjects)) || (!empty($selectedAges)))
 <section class="ml-20">
     <a href="{{ route('home') }}" class="filter-link">filters verwijderen</a>

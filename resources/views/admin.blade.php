@@ -7,8 +7,6 @@
         </div>
     @endif
 
-
-
     <div class="overflow-x-auto">
         <table class="w-2/3 mx-auto border border-orange-500">
             <caption class="border border-orange-500 p-2 bg-orange-200">
@@ -18,7 +16,6 @@
                            class="p-2 border border-orange-500 rounded-md w-2/3">
                     <button type="submit" class="bg-orange-500 text-white rounded-md px-4 py-2 mt-2">Search</button>
                 </form>
-
             </caption>
             <thead class="bg-orange-200">
                 <tr>
@@ -55,9 +52,8 @@
             </tbody>
         </table>
     </div>
-<br>
     <br>
-    <!-- Subjects Section -->
+    <br>
     <!-- Subjects Section -->
     <div>
         <br>
@@ -70,20 +66,20 @@
             </tr>
             </thead>
             <tbody>
-            @foreach ($subjects as $subject)
-                <tr>
-                    <td class="p-3 border-b border-orange-500 text-left">{{ $subject->subject }}</td>
-                    <td class="p-3 border-b  border-orange-500 text-left">
-                        <span>
-                            <a href="#" class="bg-red-600 text-white w-8 rounded-2xl mr-3 p-2 hover:bg-red-700" onclick="confirmDelete('{{ $subject->id }}')"> <i class="fa-solid fa-trash text-amber-50"></i> Delete</a>
-                            <form id="delete-form-{{ $subject->id }}" action="{{ route('admin.delete-subject', $subject->id) }}" method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                        </span>
-                    </td>
-                </tr>
-            @endforeach
+                @foreach ($subjects as $subject)
+                    <tr>
+                        <td class="p-3 border-b border-orange-500 text-left">{{ $subject->subject }}</td>
+                        <td class="p-3 border-b  border-orange-500 text-left">
+                            <span>
+                                <a href="#" class="bg-red-600 text-white w-8 rounded-2xl mr-3 p-2 hover:bg-red-700" onclick="confirmDelete('{{ $subject->id }}')"> <i class="fa-solid fa-trash text-amber-50"></i> Delete</a>
+                                <form id="delete-form-{{ $subject->id }}" action="{{ route('admin.delete-subject', $subject->id) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </span>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <!-- Add Subject Form -->
@@ -93,9 +89,7 @@
             <input type="text" id="subject" name="subject" placeholder="Naam van het onderwerp..." class="p-2 border border-orange-500 rounded-md w-full">
             <button type="submit" class="bg-orange-500 text-white rounded-md px-4 py-2 mt-2">Onderwerp toevoegen</button>
         </form>
-
     </div>
-
 
     <script>
         function confirmDelete(subjectId) {
@@ -106,5 +100,4 @@
             }
         }
     </script>
-
 @endsection

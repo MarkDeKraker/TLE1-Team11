@@ -2,27 +2,17 @@ body{
     font-family:poppins;
 }
 
-main {
-    z-index: 10;
-}
-.container-home {
-    z-index: 1000;
-    position: relative;
-}
 .side-nav{
     display: none;
     transition: 0.5s;
     height: 100%;
     width: 20rem;
     position: fixed;
-    z-index: 1000;
+    z-index: 999;
     top: 0;
     left: 0;
     overflow: hidden;
     background-color:rgb(224, 91, 20);
-}
-.side-nav a {
-    z-index: 1001;
 }
 
 .icon-tabler a{
@@ -67,13 +57,13 @@ main {
    transition: 0.3s;
 }
 
-
 .filter{
     position: sticky;
     top: 0;
     background-color: white;
     z-index: 1000;
 }
+
 /* SEARCHBAR */
 .searchbar {
     margin: 1rem;
@@ -324,14 +314,6 @@ img.art-img{
         border-radius:  15px 15px 0px 0px ;
         object-fit: cover;
         border-radius: 15px;
-    }
-
-    .login-nav{
-        display: none;
-    }
-
-    .nav-link{
-        display: none;
     }
 
     .art-btn-filter{
