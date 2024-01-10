@@ -8,18 +8,18 @@ Create
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Maak een nieuw artikel') }}</div>
+        <div class="col-md-8 ">
+            <div class="card border-orange-500">
+                <div class="card-header bg-orange-200 border-orange-500 text-2xl font-bold p-3">Maak een nieuw artikel</div>
 
-                <div class="card-body">
+                <div class="card-body bg-orange-100">
                     <form action="{{ route('article.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
                             <label class="font-bold text-xl" for="title">Titel</label>
                             <input type="text" name="title" id="title"
-                                class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}">
+                                class="form-control border-orange-500 @error('title') is-invalid @enderror" value="{{ old('title') }}">
                             @error('title')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -47,7 +47,7 @@ Create
                             <label class="font-bold text-xl">Leeftijden</label>
                             @foreach ($ages as $age)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="ages[]" value="{{ $age->id }}" id="age_{{ $age->id }}">
+                                    <input class="form-check-input border-orange-500" type="checkbox" name="ages[]" value="{{ $age->id }}" id="age_{{ $age->id }}">
                                     <label class="form-check-label" for="age_{{ $age->id }}">
                                         {{ $age->age }}
                                     </label>
@@ -66,7 +66,7 @@ Create
                             <label class="font-bold text-xl">Onderwerpen</label>
                             @foreach ($subjects as $subject)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="subjects[]" value="{{ $subject->id }}" id="subject_{{ $subject->id }}">
+                                    <input class="form-check-input border-orange-500" type="checkbox" name="subjects[]" value="{{ $subject->id }}" id="subject_{{ $subject->id }}">
                                     <label class="form-check-label" for="subject_{{ $subject->id }}">
                                         {{ $subject->subject }}
                                     </label>
@@ -85,7 +85,7 @@ Create
                         <div class="form-group">
                             <label  class="font-bold text-xl" for="image">Omslagfoto</label>
                             <input type="file" name="image" id="image"
-                                class="form-control @error('image') is-invalid @enderror">
+                                class="form-control border-orange-500 @error('image') is-invalid @enderror">
                             @error('image')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
