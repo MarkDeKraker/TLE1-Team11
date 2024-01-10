@@ -1,7 +1,7 @@
 <a href="{{ route('article.detail', $article->id) }}">
     <div class="article m-4 p-8 rounded-xl shadow-xl shadow-md-top flex justify-between">
         <div>
-            <img src="data:image/jpeg;base64,{{ $article->image }}" class="object-cover object-center w-full max-h-fit" alt="{{ $article->title }} Abeelding">
+            <img src="data:image/jpeg;base64,{{ $article->image }}" class="object-cover object-center w-full max-h-fit rounded-xl" alt="{{ $article->title }} Abeelding">
             <div class="pt-2">
                 @foreach($article->ages as $age)
                     <div class="rounded-full bg-orange-500 text-white text-xs px-2 py-1 inline-flex mr-2 mb-2">
