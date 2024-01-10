@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+    public function getIdAttribute()
+    {
+        return $this->attributes['id'];
+    }
 }

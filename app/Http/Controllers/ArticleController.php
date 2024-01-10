@@ -157,8 +157,11 @@ class ArticleController extends Controller
      */
     public function edit(string $id, Article $article)
     {
-        $this->authorize('edit', $article);
         $article = Article::find($id);
+        $this->authorize('edit', $article);
+        $article->load('user');
+
+
         $ages = Age::all();
         $subjects = Subject::all();
         return view('article.edit', compact('article', 'ages', 'subjects'));
@@ -170,6 +173,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id, Article $article)
     {
+        $article = Article::find($id);
         $this->authorize('edit', $article);
         $user = Auth::user()->id;
         $data = $request->validate([
@@ -180,7 +184,7 @@ class ArticleController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        $article = Article::find($id); // Veronderstel dat $id de id is van het artikel dat je wilt bijwerken
+ // Veronderstel dat $id de id is van het artikel dat je wilt bijwerken
 
         // Controleer of het artikel bestaat
         if (!$article) {
@@ -212,8 +216,8 @@ class ArticleController extends Controller
      */
     public function destroy(string $id, Article $article)
     {
-        $this->authorize('delete', $article);
         $article = Article::find($id);
+        $this->authorize('delete', $article);
 
         $article->delete();
 

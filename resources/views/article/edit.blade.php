@@ -9,17 +9,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Edit Article') }}</div>
+            <div class="card border-orange-500">
+                <div class="card-header bg-orange-200 border-orange-500 text-2xl font-bold p-3">{{ __('Bewerk artikel') }}</div>
 
-                <div class="card-body">
+                <div class="card-body bg-orange-100">
                     <form action="{{ route('article.update', $article->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
                         <div class="form-group">
                             <label class="font-bold text-xl" for="title">Titel</label>
-                            <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $article->title) }}">
+                            <input type="text" name="title" id="title" class="form-control border-orange-500 @error('title') is-invalid @enderror" value="{{ old('title', $article->title) }}">
                             @error('title')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -27,23 +27,28 @@
                             @enderror
                         </div>
 
+                        <br>
+
                         <div class="form-group">
                             <label class="font-bold text-xl" for="description">Tekst</label>
                             {{-- <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror">{{ old('description', $article->description) }}</textarea> --}}
                             <input name="description" id="description" type="hidden" value="{{ $article->description }}">
-                            <div id="editor" class="form-control @error('description') is-invalid @enderror"></div>
+                            <div id="editor" class="form-control border-orange-500 @error('description') is-invalid @enderror"></div>
                             @error('description')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+
+                        <br>
+
                         <div class="form-group">
                             <label class="font-bold text-xl">Leeftijden</label>
                             @foreach ($ages as $age)
                                 <div class="form-check">
                                     <input
-                                        class="form-check-input"
+                                        class="form-check-input border-orange-500"
                                         type="checkbox"
                                         name="ages[]"
                                         value="{{ $age->id }}"
@@ -62,12 +67,14 @@
                             @enderror
                         </div>
 
+                        <br>
+
                         <div class="form-group">
                             <label class="font-bold text-xl">Onderwerpen</label>
                             @foreach ($subjects as $subject)
                                 <div class="form-check">
                                     <input
-                                        class="form-check-input"
+                                        class="form-check-input border-orange-500"
                                         type="checkbox"
                                         name="subjects[]"
                                         value="{{ $subject->id }}"
@@ -86,9 +93,11 @@
                             @enderror
                         </div>
 
+                        <br>
+
                         <div class="form-group">
                             <label  class="font-bold text-xl" for="image">Omslagfoto</label>
-                            <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
+                            <input type="file" name="image" id="image" class="form-control border-orange-500 @error('image') is-invalid @enderror">
                             @error('image')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
