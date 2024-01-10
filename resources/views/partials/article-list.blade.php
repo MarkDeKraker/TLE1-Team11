@@ -1,4 +1,4 @@
-<a href="{{ route('article.detail', $article->id) }}">
+<a  href="{{ route('article.detail', $article->id) }}">
     <div class="article m-4 rounded-xl drop-shadow-2xl flex justify-between">
         <div>
             <img src="data:image/jpeg;base64,{{ $article->image }}" class="object-cover object-center w-full max-h-fit" alt="{{ $article->title }} Abeelding">
