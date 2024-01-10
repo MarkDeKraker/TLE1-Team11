@@ -44,7 +44,7 @@
 
 <script>
     function confirmDelete(subjectId) {
-        var confirmation = confirm('Are you sure you want to delete this subject?');
+        var confirmation = confirm('Are you sure you want to delete this article?');
 
         if (confirmation) {
             document.getElementById('delete-form-' + subjectId).submit();
