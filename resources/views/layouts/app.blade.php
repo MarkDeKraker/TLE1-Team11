@@ -1,80 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoungChoices</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite ('resources/css/styles.css')
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+    <script src="https://kit.fontawesome.com/3e59291876.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <nav class="navbar flex justify-between p-8 relative">
+        <div>
+            <button id="id-side-nav-open" class="side-nav-menu text-2xl"><i class="fa-solid fa-bars"></i></button>
+            <a href="{{ route('home') }}" class="font-ranchers text-orange-600 text-3xl ml-8">Young Choices</a>
+        </div>
+        <div>
+            @auth
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    @method('POST')
+                    <button type="submit" class="m-3">{{ __('Logout') }}</button>
+                </form>
+            @else
+                <a class="m-3" href="{{ route('login') }}">{{ __('Login') }}</a>
+                <a class="m-3" href="{{ route('register') }}">{{ __('Register') }}</a>
+            @endauth
+        </div>
+    </nav>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+    <!-- SIDENAV -->
+    <div id="id-side-nav" class="side-nav absolute left-0 h-full">
+        <div class="font-ranchers text-white text-3xl m-5">Young Choices</div>
+        <div href="javascript:void(0)" id="id-side-nav-close" class="side-nav-close">&times;</div>
 
-                    </ul>
+        <a href="{{ route('home') }}" class=""><i class="fa-solid fa-house text-white"> </i>Home</a>
+        <a href="{{ route('saved') }}" class=""><i class="fa-solid fa-heart"></i>Opgeslagen</a>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @hasrole('moderator')
+        <a href="{{ route('moderator') }}" class=""><i class="fa-solid fa-bookmark"></i>Mijn Artikelen</a>
+        @endhasrole
+        @hasrole('admin')
+        <a href="{{ route('admin.index') }}" class=""><i class="fa-solid fa-user-tie"></i>Admin</a>
+        @endhasrole
     </div>
+
+    <main class="py-4">
+        @yield('content')
+    </main>
 </body>
+
 </html>

@@ -6,16 +6,14 @@
 
 @if ((!empty($selectedSubjects)) || (!empty($selectedAges)))
 <section class="ml-20">
-    <a href="{{ route('home') }}" class="filter-link">filters verwijderen</a>
+    <a href="{{ route('saved') }}" class="filter-link">filters verwijderen</a>
 </section>
 @endif
 
-<!-- ARTICLELIST -->
+<!-- FAVORITE ARTICLELIST -->
 <section class="articlelist">
     @foreach ($articles as $article)
         @include('partials.article-list')
     @endforeach
 </section>
-
 @endsection
-
