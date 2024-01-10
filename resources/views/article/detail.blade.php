@@ -17,7 +17,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="bg-red-600 w-8 rounded-2xl mr-3 p-2 hover:bg-red-700" onclick="confirmDelete('{{ $article->id }}')">
+                            <button type="button" class="bg-red-600 w-8 rounded-2xl mr-3 p-2 hover:bg-red-700" onclick="confirmDelete('{{ $article->id }}')">
                                 <i class="fa-solid fa-trash text-amber-50"></i>
                             </button>
                         </form>
