@@ -8,8 +8,6 @@
                         {{ $age->age }}
                     </div>
                 @endforeach
-            </div>
-            <div>
                 @foreach($article->subjects as $subject)
                     <div class="rounded-full bg-white border  text-xs border-orange-500 px-2 py-1 inline-flex mr-2 mb-2">
                         {{ $subject->subject }}
