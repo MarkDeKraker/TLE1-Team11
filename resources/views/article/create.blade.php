@@ -17,7 +17,7 @@ Create
                         @csrf
 
                         <div class="form-group">
-                            <label for="title">Titel</label>
+                            <label class="font-bold text-xl" for="title">Titel</label>
                             <input type="text" name="title" id="title"
                                 class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}">
                             @error('title')
@@ -26,52 +26,64 @@ Create
                             </span>
                             @enderror
                         </div>
+
                         <br>
+
                         <div class="form-group">
-                            <label for="description">Tekst</label>
-                            <textarea name="description" id="description"
-                                class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                            <label class="font-bold text-xl" for="description">Tekst</label>
+                            {{-- <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea> --}}
+                            <input name="description" id="description" type="hidden">
+                            <div id="editor" class="form-control @error('description') is-invalid @enderror"></div>
                             @error('description')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
+
                         <br>
+
                         <div class="form-group">
-                            <label for="ages">Leeftijden</label>
-                            <p>Hold 'CTRL' to select multiple</p>
-                            <select name="ages[]" id="ages" class="form-control @error('ages') is-invalid @enderror"
-                                multiple>
-                                @foreach ($ages as $age)
-                                <option value="{{ $age->id }}">{{ $age->age }}</option>
-                                @endforeach
-                            </select>
+                            <label class="font-bold text-xl">Leeftijden</label>
+                            @foreach ($ages as $age)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="ages[]" value="{{ $age->id }}" id="age_{{ $age->id }}">
+                                    <label class="form-check-label" for="age_{{ $age->id }}">
+                                        {{ $age->age }}
+                                    </label>
+                                </div>
+                            @endforeach
                             @error('ages')
-                            <span class="invalid-feedback" role="alert">
+                            <div class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
-                            </span>
+                            </div>
                             @enderror
                         </div>
+
                         <br>
+
                         <div class="form-group">
-                            <label for="subjects">Onderwerpen</label>
-                            <p>Hold 'CTRL' to select multiple</p>
-                            <select name="subjects[]" id="subjects"
-                                class="form-control @error('subjects') is-invalid @enderror" multiple>
-                                @foreach ($subjects as $subject)
-                                <option value="{{ $subject->id }}">{{ $subject->subject }}</option>
-                                @endforeach
-                            </select>
+                            <label class="font-bold text-xl">Onderwerpen</label>
+                            @foreach ($subjects as $subject)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="subjects[]" value="{{ $subject->id }}" id="subject_{{ $subject->id }}">
+                                    <label class="form-check-label" for="subject_{{ $subject->id }}">
+                                        {{ $subject->subject }}
+                                    </label>
+                                </div>
+                            @endforeach
                             @error('subjects')
-                            <span class="invalid-feedback" role="alert">
+                            <div class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
-                            </span>
+                            </div>
                             @enderror
                         </div>
+
+
                         <br>
+
                         <div class="form-group">
-                            <label for="image">Omslagfoto</label>
+                            <label  class="font-bold text-xl" for="image">Omslagfoto</label>
                             <input type="file" name="image" id="image"
                                 class="form-control @error('image') is-invalid @enderror">
                             @error('image')
@@ -80,11 +92,9 @@ Create
                             </span>
                             @enderror
                         </div>
+
                         <br>
-                        <div id="editor">
-                        <br>
-                        </div>
-                        <br>
+
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
 
@@ -100,6 +110,11 @@ Create
 <script>
     var quill = new Quill('#editor', {
         theme: 'snow'
+    });
+
+    quill.on('text-change', function() {
+        var justHtml = quill.root.innerHTML;
+        document.getElementById('description').value = justHtml;
     });
 </script>
 @endsection

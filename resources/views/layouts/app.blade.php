@@ -24,7 +24,7 @@
                         <div href="javascript:void(0)" id="id-side-nav-close" class="side-nav-close">&times;</div>
 
                         <a href="{{ route('home') }}" class=""><i class="fa-solid fa-house text-white"> </i>Home</a>
-                        <a href="#" class=""><i class="fa-solid fa-user"></i>Mijn profiel</a>
+                        {{-- <a href="#" class=""><i class="fa-solid fa-user"></i>Mijn profiel</a> --}}
                         <a href="{{ route('saved') }}" class=""><i class="fa-solid fa-heart"></i>Opgeslagen</a>
 
                         @hasrole('moderator')
