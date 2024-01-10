@@ -34,7 +34,7 @@
                 <form action="{{ route('article.toggle-save', $article->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <button class="m-1 p-1 rounded-xl {{ $article->saved ? "bg-orange-500 text-white" : "bg-white text-orange-500" }}">{{ $article->saved ? "Saved" : "Save" }}</button>
+                    <button class="m-1 p-1 rounded-xl {{ $article->saved ? "bg-orange-500 text-white hover:bg-orange-600" : "bg-white text-orange-500 hover:bg-orange-400" }}">{{ $article->saved ? "Opgeslagen" : "Opslaan" }}</button>
                 </form>
             @endauth
             </div>
