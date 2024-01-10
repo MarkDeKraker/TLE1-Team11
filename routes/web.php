@@ -22,6 +22,7 @@ Route::get('/', [ArticleController::class, 'index'])->name('home');
 // Logged in
 Route::middleware('auth')->group(function () {
     Route::get('/saved', [ArticleController::class, 'saved'])->name('saved');
+    Route::get('/moderator', [ArticleController::class, 'moderator'])->name('moderator');
 
     Route::prefix('article')->group(function () {
         Route::get('/', [ArticleController::class, 'create'])->name('article.create');
