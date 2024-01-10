@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Age;
+use App\Models\Subject;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
@@ -28,8 +30,10 @@ class AdminController extends Controller
 
         // Get the filtered users
         $users = $users->get();
+        $subjects = Subject::all();
+        $ages = Age::all();
 
-        return view('admin', compact('users', 'moderatorRole', 'userRole'));
+        return view('admin', compact('ages','subjects','users', 'moderatorRole', 'userRole'));
     }
 
     public function assign(Request $request, $id)
@@ -46,4 +50,24 @@ class AdminController extends Controller
 
         return redirect()->route('admin.index')->with('success', "Moderator role $action for $user->name.");
     }
+    public function storeSubject(Request $request)
+    {
+        $request->validate([
+            'subject' => 'required|string|max:255',
+        ]);
+
+        Subject::create([
+            'subject' => $request->input('subject'),
+        ]);
+
+        return redirect()->route('admin.index')->with('success', 'Subject added successfully.');
+    }
+    public function deleteSubject($id)
+    {
+        $subject = Subject::findOrFail($id);
+        $subject->delete();
+
+        return redirect()->route('admin.index')->with('success', 'Subject deleted successfully.');
+    }
+
 }

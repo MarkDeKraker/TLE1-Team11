@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admin/index', [AdminController::class,'index'])->name('admin.index');
 Route::post('/admin/index/{user}', [AdminController::class,'assign'])->name('admin.assign');
+Route::post('/admin/index', [AdminController::class, 'storeSubject'])->name('admin.store-subject');
+Route::delete('/admin/delete-subject/{id}', [AdminController::class, 'deleteSubject'])->name('admin.delete-subject');
 
 // No auth required
 Route::get('/home', [ArticleController::class, 'index'])->name('home');

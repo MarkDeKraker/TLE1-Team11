@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-orange-500">
-                <div class="card-header bg-orange-200 border-orange-500 text-2xl font-bold p-3">{{ __('Bewerk artikel') }}</div>
+                <div class="card-header bg-orange-200 border-orange-500 text-2xl font-bold p-3">Bewerk artikel "{{ __($article->title) }}"</div>
 
                 <div class="card-body bg-orange-100">
                     <form action="{{ route('article.update', $article->id) }}" method="POST" enctype="multipart/form-data">
@@ -104,7 +104,10 @@
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                        <br>
+
+                        <button type="submit" class="btn bg-orange-500 font-bold hover:bg-orange-300 hover:border-orange-500">Artikel opslaan & bijwerken</button>
                     </form>
 
                 </div>
