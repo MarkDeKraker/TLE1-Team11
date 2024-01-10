@@ -95,7 +95,7 @@ Create
 
                         <br>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn bg-orange-500 font-bold hover:bg-orange-300 hover:border-orange-500">Artikel opslaan & toevoegen</button>
                     </form>
 
                 </div>
