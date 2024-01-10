@@ -96,6 +96,56 @@ class ArticleController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function moderator(Request $request, User $user)
+    {
+        $adminUser = User::find(1);
+        $users = User::all();
+        $adminRole = Role::findByName('admin');
+        $moderatorRole = Role::findByName('moderator');
+        $userRole = Role::findByName('user');
+
+        $adminUser->assignRole($adminRole, $userRole, $moderatorRole);
+        foreach ($users as $user) {
+            $user->assignRole($userRole);
+        }
+//        filters en search results ophalen
+        $selectedSubjects = $request->input('subjects', []);
+        $selectedAges = $request->input('ages', []);
+        $searchInput = $request->input('search');
+
+//        artikelen ophalen
+        $query = Article::with('subjects','ages')->where('user_id', Auth::user()->id);
+
+        if (!empty($selectedSubjects)) {
+            $query->whereHas('subjects', function ($q) use ($selectedSubjects) {
+                $q->whereIn('subject_id', $selectedSubjects);
+            });
+        }
+
+        if (!empty($selectedAges)) {
+            $query->whereHas('ages', function ($q) use ($selectedAges) {
+                $q->whereIn('age_id', $selectedAges);
+            });
+        }
+
+        if ($searchInput) {
+            // Add search condition to the query
+            $query->where(function ($query) use ($searchInput) {
+                $query->where('title', 'like', "%$searchInput%")
+                    ->orWhere('description', 'like', "%$searchInput%");
+            });
+        }
+
+        $articles = $query->get();
+        $ages = Age::all();
+        $subjects = Subject::all();
+
+        return view('moderator', compact('articles', 'ages', 'subjects','selectedAges', 'selectedSubjects', 'searchInput', 'user'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      * @throws AuthorizationException
      */
