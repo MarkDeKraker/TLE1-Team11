@@ -17,7 +17,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="bg-red-600 w-8 rounded-2xl mr-3 p-2 hover:bg-red-700">
+                            <button type="submit" class="bg-red-600 w-8 rounded-2xl mr-3 p-2 hover:bg-red-700" onclick="confirmDelete('{{ $article->id }}')">
                                 <i class="fa-solid fa-trash text-amber-50"></i>
                             </button>
                         </form>
@@ -50,7 +50,7 @@
             <div class="flex font-bold m-2">
                 <div class="copy-div text-xs px-2 py-1 inline-flex mr-2 mb-2">
                     <span class="copy-text" id="share-text">Copy to clipboard</span>
-                    <button onclick="myFunction()" onmouseout="outFunc()">Share URL</button>
+                    <button onclick="toggleShareInput()" onmouseout="copyClipboard()">Share URL</button>
                 </div>
                 <input type="text" value="{{ url()->current() }}" class="copy-input" id="share-input">
 
@@ -71,7 +71,15 @@
     </section>
 
     <script>
-        function myFunction() {
+        function confirmDelete(subjectId) {
+            var confirmation = confirm('Are you sure you want to delete this subject?');
+
+            if (confirmation) {
+                document.getElementById('delete-form-' + subjectId).submit();
+            }
+        }
+
+        function toggleShareInput() {
             var shareInput = document.getElementById("share-input");
             shareInput.style.display = "inline-block";
             shareInput.select();
@@ -82,7 +90,7 @@
             shareText.innerHTML = "Copied: " + shareInput.value;
         }
 
-        function outFunc() {
+        function copyClipboard() {
             var shareText = document.getElementById("share-text");
             shareText.innerHTML = "Copy to clipboard";
         }
